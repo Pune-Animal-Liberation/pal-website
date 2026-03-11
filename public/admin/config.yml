@@ -2,7 +2,7 @@ backend:
   name: github
   repo: Pune-Animal-Liberation/pal-website
   branch: main
-  auth_type: implicit
+  auth_type: pkce
 
 publish_mode: editorial_workflow
 
