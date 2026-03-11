@@ -1,7 +1,9 @@
 backend:
   name: github
-  repo: fatichar/pal-website
+  repo: Pune-Animal-Liberation/pal-website
   branch: main
+
+publish_mode: editorial_workflow
 
 media_folder: "public/images"
 public_folder: "/images"
