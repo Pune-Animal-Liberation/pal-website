@@ -9,7 +9,7 @@ public_folder: "/images"
 collections:
   - name: "blog"
     label: "Blog"
-    folder: "content/blog"
+    folder: "src/content/blog"
     create: true
     slug: "{{slug}}"
     fields:
@@ -19,7 +19,7 @@ collections:
 
   - name: "events"
     label: "Events"
-    folder: "content/events"
+    folder: "src/content/events"
     create: true
     slug: "{{slug}}"
     fields:
