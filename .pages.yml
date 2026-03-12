@@ -8,6 +8,7 @@ content:
     type: collection
     path: src/content/blog
     filename: "{slug}.md"
+    slug: "{{title}}"
     fields:
       - name: title
         label: Title
@@ -15,6 +16,9 @@ content:
       - name: date
         label: Date
         type: date
+      - name: slug
+        label: URL Slug
+        type: string
       - name: body
         label: Body
         type: markdown
@@ -24,6 +28,7 @@ content:
     type: collection
     path: src/content/events
     filename: "{slug}.md"
+    slug: "{{title}}"
     fields:
       - name: title
         label: Title
@@ -33,6 +38,9 @@ content:
         type: date
       - name: location
         label: Location
+        type: string
+      - name: slug
+        label: URL Slug
         type: string
       - name: body
         label: Body

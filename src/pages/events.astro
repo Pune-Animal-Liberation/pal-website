@@ -27,7 +27,7 @@ const sortedEvents = events.sort((a, b) => a.data.date.valueOf() - b.data.date.v
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              url={`/events/${event.id}/`}
+              url={`/events/${event.data.slug ?? event.id}/`}
             />
           ))}
         </div>

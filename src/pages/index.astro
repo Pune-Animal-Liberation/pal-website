@@ -10,8 +10,12 @@ const recentPosts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 const allEvents = await getCollection('events');
 const upcomingEvents = allEvents
+  .filter((e) => e.data.date >= today)
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .slice(0, 3);
 ---
@@ -54,7 +58,7 @@ const upcomingEvents = allEvents
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              url={`/events/${event.id}/`}
+              url={`/events/${event.data.slug ?? event.id}/`}
             />
           ))}
         </div>
@@ -75,7 +79,7 @@ const upcomingEvents = allEvents
             <BlogCard
               title={post.data.title}
               date={post.data.date}
-              url={`/blog/${post.id}/`}
+              url={`/blog/${post.data.slug ?? post.id}/`}
             />
           ))}
         </div>
