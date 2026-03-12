@@ -7,8 +7,7 @@ content:
     label: Blog
     type: collection
     path: src/content/blog
-    filename: "{slug}.md"
-    slug: "{{title}}"
+    filename: "{title}.md"
     fields:
       - name: title
         label: Title
@@ -27,8 +26,7 @@ content:
     label: Events
     type: collection
     path: src/content/events
-    filename: "{slug}.md"
-    slug: "{{title}}"
+    filename: "{title}.md"
     fields:
       - name: title
         label: Title
