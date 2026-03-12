@@ -1,17 +1,35 @@
 ---
-import { getCollection } from "astro:content";
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
 
-const posts = await getCollection("blog");
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<h1>Blog</h1>
+<Layout title="Blog" description="Read the latest articles and updates from Pune Animal Liberation.">
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">Blog</h1>
+      <p class="page-header__subtitle">Articles, updates, and reflections</p>
+    </div>
+  </div>
 
-<ul>
-  {posts.map(post => (
-    <li>
-      <a href={`/blog/${post.id}/`}>
-        {post.data.title}
-      </a>
-    </li>
-  ))}
-</ul>
+  <section class="section">
+    <div class="container">
+      {sortedPosts.length > 0 ? (
+        <div class="cards-grid">
+          {sortedPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              date={post.data.date}
+              url={`/blog/${post.id}/`}
+            />
+          ))}
+        </div>
+      ) : (
+        <p>No posts yet. Check back soon.</p>
+      )}
+    </div>
+  </section>
+</Layout>

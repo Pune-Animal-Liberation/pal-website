@@ -1,17 +1,100 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import BlogCard from '../components/BlogCard.astro';
+import EventCard from '../components/EventCard.astro';
+import { getCollection } from 'astro:content';
 
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const allEvents = await getCollection('events');
+const upcomingEvents = allEvents
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .slice(0, 3);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Home"
+  description="Pune Animal Liberation fights for the rights of all animals. Join our movement in Pune, India."
+>
+  <Hero
+    title="Be Their <em>Voice</em>"
+    subtitle="Pune Animal Liberation stands for the rights of every living being. Join us in the fight for a more compassionate world."
+    ctaText="Get Involved"
+    ctaHref="/get-involved/"
+  />
+
+  <!-- Mission -->
+  <section class="section" aria-labelledby="mission-heading">
+    <div class="container">
+      <div class="mission">
+        <h2 id="mission-heading" class="section-heading">Our Mission</h2>
+        <p class="mission__text">
+          Pune Animal Liberation (PAL) is a grassroots activist group based in Pune, India. We
+          believe all animals deserve to live free from exploitation and suffering. Through
+          outreach, education, and direct action, we work to build a world where every creature is
+          treated with dignity and respect.
+        </p>
+        <a href="/about/" class="btn btn--secondary">Learn More About PAL</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  {upcomingEvents.length > 0 && (
+    <section class="section section--grey" aria-labelledby="events-preview-heading">
+      <div class="container">
+        <h2 id="events-preview-heading" class="section-heading">Upcoming Events</h2>
+        <div class="cards-grid">
+          {upcomingEvents.map((event) => (
+            <EventCard
+              title={event.data.title}
+              date={event.data.date}
+              location={event.data.location}
+              url={`/events/${event.id}/`}
+            />
+          ))}
+        </div>
+        <div class="mt-md">
+          <a href="/events/" class="btn btn--primary">View All Events</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Recent Posts -->
+  {recentPosts.length > 0 && (
+    <section class="section" aria-labelledby="blog-preview-heading">
+      <div class="container">
+        <h2 id="blog-preview-heading" class="section-heading">Latest Posts</h2>
+        <div class="cards-grid">
+          {recentPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              date={post.data.date}
+              url={`/blog/${post.id}/`}
+            />
+          ))}
+        </div>
+        <div class="mt-md">
+          <a href="/blog/" class="btn btn--primary">Read the Blog</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading">Ready to Make a Difference?</h2>
+      <p>
+        Every action counts. Join our community of activists and help us build a more compassionate
+        Pune.
+      </p>
+      <a href="/get-involved/" class="btn">Join the Movement</a>
+    </div>
+  </section>
+</Layout>

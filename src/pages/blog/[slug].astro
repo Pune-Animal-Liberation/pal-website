@@ -1,8 +1,9 @@
 ---
-import { getCollection, type CollectionEntry, render } from "astro:content";
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
 
   return posts.map((post) => ({
     params: { slug: post.id },
@@ -11,14 +12,31 @@ export async function getStaticPaths() {
 }
 
 type Props = {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 };
 
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+const formattedDate = post.data.date.toLocaleDateString('en-IN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
-<h1>{post.data.title}</h1>
+<Layout title={post.data.title}>
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">{post.data.title}</h1>
+    </div>
+  </div>
 
-<Content />
+  <div class="post">
+    <p class="post__date">{formattedDate}</p>
+    <div class="post__body">
+      <Content />
+    </div>
+    <a href="/blog/" class="btn btn--secondary mt-md">&larr; Back to Blog</a>
+  </div>
+</Layout>

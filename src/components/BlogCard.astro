@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  url: string;
+}
+
+const { title, date, url } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-IN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="card">
+  <p class="card__meta">{formattedDate}</p>
+  <h3 class="card__title">
+    <a href={url}>{title}</a>
+  </h3>
+  <a href={url} class="card__link" aria-label={`Read: ${title}`}>Read More &rarr;</a>
+</article>

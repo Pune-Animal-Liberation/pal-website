@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  location?: string;
+  url: string;
+}
+
+const { title, date, location, url } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-IN', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="card card--event">
+  <p class="card__meta">{formattedDate}</p>
+  <h3 class="card__title">
+    <a href={url}>{title}</a>
+  </h3>
+  {location && (
+    <p class="card__location">
+      <span aria-hidden="true">&#x1F4CD;</span>
+      <span>{location}</span>
+    </p>
+  )}
+  <a href={url} class="card__link card__link--event" aria-label={`Event details: ${title}`}>
+    Details &rarr;
+  </a>
+</article>

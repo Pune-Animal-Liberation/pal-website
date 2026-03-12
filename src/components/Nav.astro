@@ -1,0 +1,41 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/events/', label: 'Events' },
+  { href: '/get-involved/', label: 'Get Involved' },
+  { href: '/resources/', label: 'Resources' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="/" class="nav__brand" aria-label="Pune Animal Liberation — Home">PAL</a>
+      <ul class="nav__links" role="list">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={
+                link.href === '/'
+                  ? currentPath === '/'
+                    ? 'page'
+                    : undefined
+                  : currentPath.startsWith(link.href)
+                    ? 'page'
+                    : undefined
+              }
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>

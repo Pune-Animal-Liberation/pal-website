@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EventCard from '../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+
+const events = await getCollection('events');
+const sortedEvents = events.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+---
+
+<Layout
+  title="Events"
+  description="Join Pune Animal Liberation at our upcoming events, outreach, and activism in Pune."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">Events</h1>
+      <p class="page-header__subtitle">Upcoming activism and outreach</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      {sortedEvents.length > 0 ? (
+        <div class="cards-grid">
+          {sortedEvents.map((event) => (
+            <EventCard
+              title={event.data.title}
+              date={event.data.date}
+              location={event.data.location}
+              url={`/events/${event.id}/`}
+            />
+          ))}
+        </div>
+      ) : (
+        <p>No upcoming events. Check back soon.</p>
+      )}
+    </div>
+  </section>
+</Layout>

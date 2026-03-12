@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+
+  return events.map((event) => ({
+    params: { slug: event.id },
+    props: { event },
+  }));
+}
+
+type Props = {
+  event: CollectionEntry<'events'>;
+};
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+
+const formattedDate = event.data.date.toLocaleDateString('en-IN', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout title={event.data.title}>
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">{event.data.title}</h1>
+    </div>
+  </div>
+
+  <div class="post">
+    <p class="post__date">{formattedDate}</p>
+    {event.data.location && (
+      <p class="post__location">
+        <span aria-hidden="true">&#x1F4CD;</span>
+        <span>{event.data.location}</span>
+      </p>
+    )}
+    <div class="post__body">
+      <Content />
+    </div>
+    <a href="/events/" class="btn btn--secondary mt-md">&larr; Back to Events</a>
+  </div>
+</Layout>
