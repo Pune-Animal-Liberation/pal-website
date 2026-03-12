@@ -23,6 +23,8 @@ const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.val
             <BlogCard
               title={post.data.title}
               date={post.data.date}
+              author={post.data.author}
+              image={post.data.image}
               url={`/blog/${post.data.slug ?? post.id}/`}
             />
           ))}

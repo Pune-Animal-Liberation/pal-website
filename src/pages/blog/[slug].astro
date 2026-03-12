@@ -29,11 +29,17 @@ const formattedDate = post.data.date.toLocaleDateString('en-IN', {
   <div class="page-header">
     <div class="container">
       <h1 class="page-header__title">{post.data.title}</h1>
+      <p class="page-header__subtitle">
+        {formattedDate}
+        {post.data.author && <span> &middot; {post.data.author}</span>}
+      </p>
     </div>
   </div>
 
   <div class="post">
-    <p class="post__date">{formattedDate}</p>
+    {post.data.image && (
+      <img src={post.data.image} alt="" class="post__cover" />
+    )}
     <div class="post__body">
       <Content />
     </div>

@@ -3,9 +3,11 @@ interface Props {
   title: string;
   date: Date;
   url: string;
+  author?: string;
+  image?: string;
 }
 
-const { title, date, url } = Astro.props;
+const { title, date, url, author, image } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-IN', {
   year: 'numeric',
@@ -15,7 +17,15 @@ const formattedDate = date.toLocaleDateString('en-IN', {
 ---
 
 <article class="card">
-  <p class="card__meta">{formattedDate}</p>
+  {image && (
+    <a href={url} tabindex="-1" aria-hidden="true">
+      <img src={image} alt="" class="card__image" />
+    </a>
+  )}
+  <p class="card__meta">
+    {formattedDate}
+    {author && <span class="card__author"> &middot; {author}</span>}
+  </p>
   <h3 class="card__title">
     <a href={url}>{title}</a>
   </h3>

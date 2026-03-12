@@ -18,9 +18,18 @@ content:
         label: Date
         type: date
 
+      - name: author
+        label: Author
+        type: string
+
+      - name: image
+        label: Cover Image
+        type: image
+        required: false
+
       - name: body
         label: Body
-        type: markdown
+        type: rich-text
 
 
   - name: events
@@ -44,4 +53,4 @@ content:
 
       - name: body
         label: Body
-        type: markdown
+        type: rich-text
