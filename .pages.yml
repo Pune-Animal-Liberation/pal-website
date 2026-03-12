@@ -17,6 +17,7 @@ content:
       - name: date
         label: Date
         type: date
+        default: "{{now}}"
 
       - name: author
         label: Author

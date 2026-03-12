@@ -120,7 +120,7 @@ li {
 /* ===== Navigation ===== */
 .nav {
   background: #ffffff;
-  padding: var(--spacing-sm) 0;
+  padding: var(--spacing-xs) 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -137,12 +137,25 @@ li {
 }
 
 .nav__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
   font-size: var(--font-size-xl);
   font-weight: 900;
   color: var(--color-primary-dark);
   text-decoration: none;
   letter-spacing: -0.5px;
   text-transform: uppercase;
+  line-height: 1;
+}
+
+.nav__logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+}
+
+.nav__brand-text {
   line-height: 1;
 }
 
