@@ -9,19 +9,21 @@ interface Props {
 
 const { title, date, url, author, image } = Astro.props;
 
-const formattedDate = date.toLocaleDateString('en-IN', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
+const formattedDate = date.toLocaleDateString("en-IN", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 });
 ---
 
 <article class="card">
-  {image && (
-    <a href={url} tabindex="-1" aria-hidden="true">
-      <img src={image} alt="" class="card__image" />
-    </a>
-  )}
+  {
+    image && (
+      <a href={url} tabindex="-1" aria-hidden="true">
+        <img src={image} alt="" class="card__image" />
+      </a>
+    )
+  }
   <p class="card__meta">
     {formattedDate}
     {author && <span class="card__author"> &middot; {author}</span>}
@@ -29,5 +31,34 @@ const formattedDate = date.toLocaleDateString('en-IN', {
   <h3 class="card__title">
     <a href={url}>{title}</a>
   </h3>
-  <a href={url} class="card__link" aria-label={`Read: ${title}`}>Read More &rarr;</a>
+  <a href={url} class="card__link" aria-label={`Read: ${title}`}
+    >Read More &rarr;</a
+  >
+  <a
+    href={url}
+    class="remark42__counter"
+    data-url={`https://puneanimalliberation.com${url}`}
+    data-card-url={url}
+  >
+    Loading comments...
+  </a>
 </article>
+
+<script define:vars={{ url }}>
+  // Load comment count for this card when DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    const counter = document.querySelector(`[data-card-url="${url}"]`);
+    if (counter) {
+      const apiUrl = counter.dataset.url;
+      fetch(`https://comments.puneanimalliberation.com/api/v1/count?site=puneanimal&url=${apiUrl}`)
+        .then(res => res.json())
+        .then(data => {
+          const count = data.count || 0;
+          counter.textContent = `${count} ${count === 1 ? 'comment' : 'comments'}`;
+        })
+        .catch(() => {
+          counter.textContent = '0 comments';
+        });
+    }
+  });
+</script>

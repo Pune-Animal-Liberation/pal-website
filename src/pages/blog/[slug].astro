@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getCollection, type CollectionEntry, render } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, type CollectionEntry, render } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
 
   return posts.map((post) => ({
     params: { slug: post.data.slug ?? post.id },
@@ -12,16 +12,16 @@ export async function getStaticPaths() {
 }
 
 type Props = {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<"blog">;
 };
 
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const formattedDate = post.data.date.toLocaleDateString('en-IN', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
+const formattedDate = post.data.date.toLocaleDateString("en-IN", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 });
 ---
 
@@ -37,23 +37,173 @@ const formattedDate = post.data.date.toLocaleDateString('en-IN', {
   </div>
 
   <div class="post">
-    {post.data.image && (
-      <img src={post.data.image} alt="" class="post__cover" />
-    )}
+    {
+      post.data.image && (
+        <img src={post.data.image} alt="" class="post__cover" />
+      )
+    }
+
+    <!-- Article content -->
     <div class="post__body">
       <Content />
     </div>
 
-  <div id="remark42"></div>
+    <!-- Article reactions -->
+    <div class="article-reactions">
+      <button data-reaction="like">👍 <span>0</span></button>
+      <button data-reaction="love">❤️ <span>0</span></button>
+      <button data-reaction="fire">🔥 <span>0</span></button>
+    </div>
 
-  <script>
-    window.remark_config = {
-      host: "https://comments.puneanimalliberation.com",
-      site_id: "puneanimal"
-    }
-  </script>
+    <script>
+      const host = "https://comments.puneanimalliberation.com";
+      const site = "puneanimal";
+      const url = location.pathname;
 
-  <script src="https://comments.puneanimalliberation.com/web/embed.js"></script>
+      const buttons = document.querySelectorAll(".article-reactions button");
+
+      async function loadReactions() {
+        try {
+          console.log('Loading reactions for:', url);
+          // Try different possible endpoints
+          const res = await fetch(`${host}/api/v1/find?site=${site}&url=${encodeURIComponent(url)}`);
+
+          if (!res.ok) {
+            console.error('Failed to load reactions:', res.status, res.statusText);
+            return;
+          }
+
+          const data = await res.json();
+          console.log('Reactions data:', data);
+
+          buttons.forEach((btn) => {
+            const type = btn.dataset.reaction;
+            const count = data[type] || 0;
+            btn.querySelector("span").textContent = count;
+          });
+        } catch (error) {
+          console.error('Failed to load reactions:', error);
+        }
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const type = btn.dataset.reaction;
+          console.log('Voting:', type, 'for:', url);
+
+          try {
+            // Try correct Remark42 vote endpoint
+            const res = await fetch(`${host}/api/v1/vote`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                id: url, // Remark42 uses 'id' not 'url'
+                vote: type,
+              }),
+            });
+
+            console.log('Vote response:', res.status, res.statusText);
+
+            if (!res.ok) {
+              console.error('Failed to vote:', res.status, res.statusText);
+              const errorData = await res.json().catch(() => ({}));
+              console.error('Error details:', errorData);
+            } else {
+              console.log('Vote successful, reloading reactions');
+              loadReactions();
+            }
+          } catch (error) {
+            console.error('Failed to vote:', error);
+          }
+        });
+      });
+
+      loadReactions();
+    </script>
+
+    <!-- Comment counter -->
+    <a
+      href="#remark42"
+      class="remark42__counter"
+      data-url={`https://puneanimalliberation.com${Astro.url.pathname}`}
+    >
+      Loading comments...
+    </a>
+
+    <!-- Comments -->
+    <div id="remark42"></div>
+
+    <script>
+      window.remark_config = {
+        host: "https://comments.puneanimalliberation.com",
+        site_id: "puneanimal",
+        theme: 'light',
+        page_title: document.title,
+        url: `https://puneanimalliberation.com${location.pathname}`,
+        max_shown_comments: 15,
+        show_email_subscription: false,
+        simple_view: false,
+        no_footer: false,
+        hide_anonymous: false,
+        enable_backlinks: false,
+        show_rss_subscription: false,
+        show_upvotes: false,
+        show_downvotes: false,
+      };
+
+      window.addEventListener("load", function () {
+        const s = document.createElement("script");
+        s.src = "https://comments.puneanimalliberation.com/web/embed.js";
+        s.defer = true;
+        document.body.appendChild(s);
+
+        // Load comment count
+        const counter = document.querySelector(".remark42__counter") as HTMLElement;
+        if (counter) {
+          const url = counter.dataset.url;
+          fetch(`https://comments.puneanimalliberation.com/api/v1/count?site=puneanimal&url=${url}`)
+            .then(res => res.json())
+            .then(data => {
+              const count = data.count || 0;
+              counter.textContent = `${count} ${count === 1 ? 'comment' : 'comments'}`;
+            })
+            .catch(() => {
+              counter.textContent = '0 comments';
+            });
+        }
+
+        // Remove admin controls entirely for all users
+        setTimeout(() => {
+          const adminButtons = document.querySelectorAll('.remark42__comment-actions button[title*="Hide"], .remark42__comment-actions button[title*="Show"], .remark42__comment-actions button[title*="Delete"], .remark42__comment-actions button[title*="Edit"], .remark42__comment-actions button[title*="Verify"]');
+          adminButtons.forEach(btn => {
+            (btn as HTMLElement).style.display = 'none';
+            (btn as HTMLElement).remove();
+          });
+
+          // Also remove moderation panels and hidden comments notices
+          const moderationElements = document.querySelectorAll('.remark42__moderation, .remark42__moderation-panel, .remark42__hidden-comments-notice, .remark42__show-hidden-comments');
+          moderationElements.forEach(el => {
+            (el as HTMLElement).style.display = 'none';
+            (el as HTMLElement).remove();
+          });
+        }, 2000);
+
+        // Keep checking for new elements that might appear
+        setInterval(() => {
+          const adminButtons = document.querySelectorAll('.remark42__comment-actions button[title*="Hide"], .remark42__comment-actions button[title*="Show"], .remark42__comment-actions button[title*="Delete"], .remark42__comment-actions button[title*="Edit"], .remark42__comment-actions button[title*="Verify"]');
+          adminButtons.forEach(btn => {
+            (btn as HTMLElement).style.display = 'none';
+            (btn as HTMLElement).remove();
+          });
+
+          const moderationElements = document.querySelectorAll('.remark42__moderation, .remark42__moderation-panel, .remark42__hidden-comments-notice, .remark42__show-hidden-comments');
+          moderationElements.forEach(el => {
+            (el as HTMLElement).style.display = 'none';
+            (el as HTMLElement).remove();
+          });
+        }, 5000);
+      });
+    </script>
 
     <a href="/blog/" class="btn btn--secondary mt-md">&larr; Back to Blog</a>
   </div>
