@@ -47,18 +47,25 @@ const formattedDate = date.toLocaleDateString("en-IN", {
 <script define:vars={{ url }}>
   // Load comment count for this card when DOM is ready
   document.addEventListener('DOMContentLoaded', function() {
-    const counter = document.querySelector(`[data-card-url="${url}"]`);
+    // Use a more specific selector to avoid conflicts
+    const counter = document.querySelector(`[data-card-url="${url}"]:not([data-loaded])`);
     if (counter) {
+      // Mark as loaded to prevent duplicate processing
+      counter.setAttribute('data-loaded', 'true');
       const apiUrl = counter.dataset.url;
-      fetch(`https://comments.puneanimalliberation.com/api/v1/count?site=puneanimal&url=${apiUrl}`)
-        .then(res => res.json())
-        .then(data => {
-          const count = data.count || 0;
-          counter.textContent = `${count} ${count === 1 ? 'comment' : 'comments'}`;
-        })
-        .catch(() => {
-          counter.textContent = '0 comments';
-        });
+
+      // Add small delay to avoid race conditions
+      setTimeout(() => {
+        fetch(`https://comments.puneanimalliberation.com/api/v1/count?site=puneanimal&url=${encodeURIComponent(apiUrl)}`)
+          .then(res => res.json())
+          .then(data => {
+            const count = data.count || 0;
+            counter.textContent = `${count} ${count === 1 ? 'comment' : 'comments'}`;
+          })
+          .catch(() => {
+            counter.textContent = '0 comments';
+          });
+      }, Math.random() * 500 + 100); // Random delay between 100-600ms
     }
   });
 </script>
