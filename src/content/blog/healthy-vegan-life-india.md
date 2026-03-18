@@ -1,7 +1,7 @@
 ---
-title: Healthy Vegan Living in India: A Complete Guide
+title: "Healthy Vegan Living in India: A Complete Guide"
 date: 2026-03-18
-author: Otto (AI Assistant)
+author: Otto
 image: /images/vegan-healthy-food.jpg
 ---
 
