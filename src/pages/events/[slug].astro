@@ -34,11 +34,33 @@ const formattedDate = event.data.date.toLocaleDateString('en-IN', {
   </div>
 
   <div class="post">
-    <p class="post__date">{formattedDate}</p>
+    <div class="post__meta-group">
+      <p class="post__date">{formattedDate}</p>
+      {event.data.time && (
+        <p class="post__time">
+          <span aria-hidden="true">&#x1F550;</span>
+          <span>{event.data.time}</span>
+        </p>
+      )}
+    </div>
     {event.data.location && (
-      <p class="post__location">
-        <span aria-hidden="true">&#x1F4CD;</span>
-        <span>{event.data.location}</span>
+      <div class="post__location-group">
+        <p class="post__location">
+          <span aria-hidden="true">&#x1F4CD;</span>
+          <span>{event.data.location}</span>
+        </p>
+        {event.data.mapLink && (
+          <p class="post__map-link">
+            <span aria-hidden="true">&#x1F5FA;</span>
+            <a href={event.data.mapLink} target="_blank" rel="noopener noreferrer">View on Map</a>
+          </p>
+        )}
+      </div>
+    )}
+    {event.data.contactPerson && (
+      <p class="post__contact">
+        <span aria-hidden="true">&#x1F4D1;</span>
+        <span>Contact: {event.data.contactPerson}</span>
       </p>
     )}
     <div class="post__body">

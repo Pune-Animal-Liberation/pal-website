@@ -48,9 +48,24 @@ content:
         label: Date
         type: date
 
+      - name: time
+        label: Time
+        type: string
+        required: false
+
       - name: location
         label: Location
         type: string
+
+      - name: mapLink
+        label: Map Link
+        type: string
+        required: false
+
+      - name: contactPerson
+        label: Contact Person
+        type: string
+        required: false
 
       - name: body
         label: Body

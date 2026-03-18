@@ -18,6 +18,9 @@ const events = defineCollection({
     title: z.string(),
     date: z.date(),
     location: z.string().optional(),
+    time: z.string().optional(),
+    mapLink: z.string().url().optional(),
+    contactPerson: z.string().optional(),
     slug: z.string().optional(),
   })
 });
