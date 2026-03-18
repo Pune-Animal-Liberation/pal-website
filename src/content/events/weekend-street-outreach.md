@@ -1,12 +1,14 @@
 ---
-title: Weekend Street Outreach
-date: 2026-03-14
-location: FC Road, opp Westside
+title: 🎬 3-Minute Movie Challenge 🎬
+date: 2026-03-22
+location: Linear Garden, Pimple Saudagar
 ---
-Join us for a powerful street outreach to educate people about animal suffering.
+Pune Animal Liberation x We The Free Pune
 
-Time: 5 PM to 8 PM
+⏰ Time: 5:00 PM - 9:00 PM
 
-Location: [https://maps.app.goo.gl/8r1qGcuDiJ8q3vQv8](https://maps.app.goo.gl/8r1qGcuDiJ8q3vQv8)
+[https://maps.app.goo.gl/DommFUkjZrSqAc5z5](https://maps.app.goo.gl/DommFUkjZrSqAc5z5)
 
-To participate, send your name to the **Outreach Coordinator**: Pravin Giri 9284287236
+🔗 RSVP: [https://www.activism.wtf/wtf\_pune\_india\_-\_wtf\_movie\_challenge\_march\_22nd\_2026](https://www.activism.wtf/wtf_pune_india_-_wtf_movie_challenge_march_22nd_2026)
+
+📞 Contact: Pravin Giri (9284287236)
