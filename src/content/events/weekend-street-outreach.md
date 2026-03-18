@@ -3,6 +3,8 @@ title: 🎬 3-Minute Movie Challenge 🎬
 date: 2026-03-22
 location: Linear Garden, Pimple Saudagar
 ---
+![](/images/3MMC%20poster%2022march%20pimple%20saudagar.jpg.jpeg)
+
 Pune Animal Liberation x We The Free Pune
 
 ⏰ Time: 5:00 PM - 9:00 PM
