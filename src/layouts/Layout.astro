@@ -6,12 +6,22 @@ import '../styles/site.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: string;
+  canonical?: string;
 }
 
 const {
   title,
   description = 'Pune Animal Liberation — Fighting for the rights of all animals in Pune, India.',
+  image = '/images/og-default.jpg',
+  type = 'website',
+  canonical = Astro.url.pathname,
 } = Astro.props;
+
+const siteUrl = 'https://puneanimalliberation.com';
+const fullUrl = `${siteUrl}${canonical}`;
+const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!doctype html>
@@ -22,7 +32,34 @@ const {
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
     <meta name="description" content={description} />
+    <link rel="canonical" href={fullUrl} />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content={`${title} | Pune Animal Liberation`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={fullUrl} />
+    <meta property="og:site_name" content="Pune Animal Liberation" />
+    <meta property="og:locale" content="en_IN" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Pune Animal Liberation`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={title} />
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="author" content="Pune Animal Liberation" />
+    <meta name="keywords" content="animal rights, veganism, animal liberation, Pune, India, activism, animal welfare" />
+    
     <title>{title} | Pune Animal Liberation</title>
   </head>
   <body>

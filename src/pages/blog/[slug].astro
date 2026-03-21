@@ -25,7 +25,33 @@ const formattedDate = post.data.date.toLocaleDateString("en-IN", {
 });
 ---
 
-<Layout title={post.data.title}>
+<Layout 
+  title={post.data.title}
+  description={post.data.description || `Read ${post.data.title} by ${post.data.author || 'Pune Animal Liberation'}`}
+  image={post.data.image}
+  type="article"
+>
+  <!-- Structured Data for Article -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.data.title,
+    "datePublished": post.data.date.toISOString(),
+    "dateModified": post.data.date.toISOString(),
+    "author": {
+      "@type": "Organization",
+      "name": "Pune Animal Liberation"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Pune Animal Liberation",
+      "url": "https://puneanimalliberation.com"
+    },
+    "description": post.data.description || `Read ${post.data.title} by ${post.data.author || 'Pune Animal Liberation'}`,
+    "image": post.data.image ? (post.data.image.startsWith('http') ? post.data.image : `https://puneanimalliberation.com${post.data.image}`) : undefined,
+    "url": `https://puneanimalliberation.com${Astro.url.pathname}`,
+    "mainEntityOfPage": `https://puneanimalliberation.com${Astro.url.pathname}`
+  }, null, 2)} />
   <div class="page-header">
     <div class="container">
       <h1 class="page-header__title">{post.data.title}</h1>

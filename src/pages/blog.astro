@@ -7,7 +7,11 @@ const posts = await getCollection('blog');
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Layout title="Blog" description="Read the latest articles and updates from Pune Animal Liberation.">
+<Layout 
+  title="Blog - Pune Animal Liberation" 
+  description="Read the latest articles and updates from Pune Animal Liberation about animal rights, veganism, and activism in Pune, India."
+  image="/images/og-blog.jpg"
+>
   <div class="page-header">
     <div class="container">
       <h1 class="page-header__title">Blog</h1>
