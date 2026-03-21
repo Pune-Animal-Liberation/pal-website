@@ -3,6 +3,9 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/site.css';
 
+// Read critical CSS for inlining
+import criticalCss from '../styles/critical.css?raw';
+
 interface Props {
   title: string;
   description?: string;
@@ -32,6 +35,13 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://comments.puneanimalliberation.com" />
+    <link rel="dns-prefetch" href="//comments.puneanimalliberation.com" />
+    
+    <!-- Critical CSS -->
+    <style set:html={criticalCss}></style>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content={description} />
@@ -69,6 +79,9 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
       <slot />
     </main>
     <Footer />
-    <script async defer src="https://comments.puneanimalliberation.com/web/counter.js"></script>
+    <script src="https://comments.puneanimalliberation.com/web/counter.js" async defer></script>
+    <!-- Load non-critical CSS after page load -->
+    <link rel="stylesheet" href="/assets/Layout.D8HRbw_S.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="/assets/Layout.D8HRbw_S.css" /></noscript>
   </body>
 </html>
