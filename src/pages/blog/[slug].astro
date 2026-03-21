@@ -65,7 +65,7 @@ const formattedDate = post.data.date.toLocaleDateString("en-IN", {
   <div class="post">
     {
       post.data.image && (
-        <img src={post.data.image} alt="" class="post__cover" />
+        <img src={post.data.image} alt="" class="post__cover" width="800" height="400" />
       )
     }
 
@@ -87,24 +87,30 @@ const formattedDate = post.data.date.toLocaleDateString("en-IN", {
     <div id="remark42"></div>
 
     <script>
-      window.remark_config = {
-        host: "https://comments.puneanimalliberation.com",
-        site_id: "puneanimal",
-        theme: 'light',
-        page_title: document.title,
-        url: `https://puneanimalliberation.com${location.pathname}`,
-        max_shown_comments: 15,
-        show_email_subscription: false,
-        simple_view: false,
-        no_footer: false,
-        hide_anonymous: false,
-        enable_backlinks: false,
-        show_rss_subscription: false,
-        show_upvotes: false,
-        show_downvotes: false,
-      };
+      // Only load comments if user interacts
+      let commentsLoaded = false;
+      
+      function loadComments() {
+        if (commentsLoaded) return;
+        commentsLoaded = true;
+        
+        window.remark_config = {
+          host: "https://comments.puneanimalliberation.com",
+          site_id: "puneanimal",
+          theme: 'light',
+          page_title: document.title,
+          url: `https://puneanimalliberation.com${location.pathname}`,
+          max_shown_comments: 15,
+          show_email_subscription: false,
+          simple_view: false,
+          no_footer: false,
+          hide_anonymous: false,
+          enable_backlinks: false,
+          show_rss_subscription: false,
+          show_upvotes: false,
+          show_downvotes: false,
+        };
 
-      window.addEventListener("load", function () {
         const s = document.createElement("script");
         s.src = "https://comments.puneanimalliberation.com/web/embed.js";
         s.defer = true;
@@ -125,7 +131,7 @@ const formattedDate = post.data.date.toLocaleDateString("en-IN", {
             });
         }
 
-        // Remove admin controls entirely for all users
+        // Remove admin controls
         setTimeout(() => {
           const adminButtons = document.querySelectorAll('.remark42__comment-actions button[title*="Hide"], .remark42__comment-actions button[title*="Show"], .remark42__comment-actions button[title*="Delete"], .remark42__comment-actions button[title*="Edit"], .remark42__comment-actions button[title*="Verify"]');
           adminButtons.forEach(btn => {
@@ -133,28 +139,27 @@ const formattedDate = post.data.date.toLocaleDateString("en-IN", {
             (btn as HTMLElement).remove();
           });
 
-          // Also remove moderation panels and hidden comments notices
           const moderationElements = document.querySelectorAll('.remark42__moderation, .remark42__moderation-panel, .remark42__hidden-comments-notice, .remark42__show-hidden-comments');
           moderationElements.forEach(el => {
             (el as HTMLElement).style.display = 'none';
             (el as HTMLElement).remove();
           });
         }, 2000);
+      }
 
-        // Keep checking for new elements that might appear
-        setInterval(() => {
-          const adminButtons = document.querySelectorAll('.remark42__comment-actions button[title*="Hide"], .remark42__comment-actions button[title*="Show"], .remark42__comment-actions button[title*="Delete"], .remark42__comment-actions button[title*="Edit"], .remark42__comment-actions button[title*="Verify"]');
-          adminButtons.forEach(btn => {
-            (btn as HTMLElement).style.display = 'none';
-            (btn as HTMLElement).remove();
-          });
-
-          const moderationElements = document.querySelectorAll('.remark42__moderation, .remark42__moderation-panel, .remark42__hidden-comments-notice, .remark42__show-hidden-comments');
-          moderationElements.forEach(el => {
-            (el as HTMLElement).style.display = 'none';
-            (el as HTMLElement).remove();
-          });
-        }, 5000);
+      // Load comments when user scrolls near bottom or clicks comment counter
+      window.addEventListener("load", function () {
+        const counter = document.querySelector(".remark42__counter") as HTMLElement;
+        if (counter) {
+          counter.addEventListener("click", loadComments);
+        }
+        
+        // Load comments when scrolling near bottom
+        window.addEventListener("scroll", function() {
+          if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+            loadComments();
+          }
+        }, { once: true });
       });
     </script>
 

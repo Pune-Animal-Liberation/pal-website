@@ -2,14 +2,14 @@
 :root {
   --color-bg: #ffffff;
   --color-text: #1a2e1a;
-  --color-text-muted: #4a6741;
+  --color-text-muted: #2d4a2d;
   --color-primary: #40916c;
   --color-primary-dark: #2d6a4f;
   --color-secondary: #52b788;
   --color-surface: #f0fdf4;
   --color-border: #d1e7d8;
-  --color-dark-bg: #2d6a4f;
-  --color-dark-text: #e8f5ee;
+  --color-dark-bg: #1a4d2e;
+  --color-dark-text: #ffffff;
 
   --font-sans: system-ui, 'Helvetica Neue', Arial, sans-serif;
 
@@ -215,7 +215,7 @@ li {
 
 .hero__subtitle {
   font-size: var(--font-size-lg);
-  color: #95d5b2;
+  color: #b7e4c7;
   max-width: 600px;
   margin: 0 auto var(--spacing-md);
   line-height: 1.5;
@@ -464,7 +464,7 @@ li {
 }
 
 .page-header__subtitle {
-  color: #95d5b2;
+  color: #b7e4c7;
   font-size: var(--font-size-lg);
   margin-bottom: 0;
 }
@@ -576,7 +576,7 @@ li {
 }
 
 .footer__tagline {
-  color: #74b88a;
+  color: #b7e4c7;
   font-size: var(--font-size-sm);
   line-height: 1.5;
   margin-bottom: 0;
@@ -587,7 +587,7 @@ li {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #74b88a;
+  color: #b7e4c7;
   margin-bottom: var(--spacing-sm);
 }
 
@@ -616,7 +616,7 @@ li {
   border-top: 1px solid #2d6a4f;
   padding-top: var(--spacing-sm);
   text-align: center;
-  color: #74b88a;
+  color: #b7e4c7;
   font-size: var(--font-size-sm);
   margin-bottom: 0;
 }

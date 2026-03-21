@@ -7,6 +7,30 @@ import Layout from '../layouts/Layout.astro';
   description="Learn about Pune Animal Liberation — who we are, what we stand for, and why we fight for animal rights in Pune, India."
   image="/images/og-about.jpg"
 >
+  <!-- Structured Data for About Page -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Pune Animal Liberation",
+    "description": "Learn about Pune Animal Liberation — who we are, what we stand for, and why we fight for animal rights in Pune, India.",
+    "url": "https://puneanimalliberation.com/about/",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Pune Animal Liberation",
+      "description": "Pune Animal Liberation (PAL) is a grassroots animal rights organisation based in Pune, India. We are a collective of activists, educators, and advocates united by a shared belief: animals are not resources.",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pune, India"
+      },
+      "knowsAbout": [
+        "animal rights",
+        "veganism",
+        "animal welfare",
+        "animal liberation",
+        "activism"
+      ]
+    }
+  }, null, 2)} />
   <div class="page-header">
     <div class="container">
       <h1 class="page-header__title">About PAL</h1>

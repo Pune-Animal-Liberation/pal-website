@@ -12,6 +12,33 @@ const sortedEvents = events.sort((a, b) => a.data.date.valueOf() - b.data.date.v
   description="Join Pune Animal Liberation at our upcoming events, outreach, and activism in Pune, India."
   image="/images/og-events.jpg"
 >
+  <!-- Structured Data for Events Page -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Events - Pune Animal Liberation",
+    "description": "Join Pune Animal Liberation at our upcoming events, outreach, and activism in Pune, India.",
+    "url": "https://puneanimalliberation.com/events/",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": sortedEvents.map((event, index) => ({
+        "@type": "Event",
+        "position": index + 1,
+        "name": event.data.title,
+        "startDate": event.data.date.toISOString(),
+        "location": event.data.location ? {
+          "@type": "Place",
+          "name": event.data.location
+        } : undefined,
+        "url": `https://puneanimalliberation.com/events/${event.data.slug ?? event.id}/`,
+        "organizer": {
+          "@type": "Organization",
+          "name": "Pune Animal Liberation",
+          "url": "https://puneanimalliberation.com"
+        }
+      }))
+    }
+  }, null, 2)} />
   <div class="page-header">
     <div class="container">
       <h1 class="page-header__title">Events</h1>
