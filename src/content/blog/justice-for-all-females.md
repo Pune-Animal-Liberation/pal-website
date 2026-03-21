@@ -2,7 +2,10 @@
 title: "बियॉन्ड स्पिसीज: Justice for all females - जागतिक महिला दिनानिमित्त विशेष कार्यक्रम"
 date: 2026-03-18
 author: प्राजक्ता शिंदे
-image: /images/Womens Day.jpeg
+thumbnail: /images/womens-day-optimized.webp
+image: /images/womens-day-cover.jpg
+thumbnailAlt: "Women's Day event by Pune Animal Liberation"
+imageAlt: "Women's Day event by Pune Animal Liberation - full size"
 ---
 जागतिक महिला दिनाच्या निमित्ताने ‘पुणे ॲनिमल लिबरेशन’ या प्राणी हक्कांसाठी कार्य करणाऱ्या तळागाळातील कार्यकर्त्यांच्या गटाने “बियॉन्ड स्पिसीज: जस्टिस फॉर ऑल फीमेल्स” या संकल्पनेवर आधारित एक प्रभावी आणि विचारप्रवर्तक निदर्शनांचे आयोजन केले. या उपक्रमाचा मुख्य उद्देश म्हणजे ‘स्त्री’ या संकल्पनेला केवळ मानवापुरते मर्यादित न ठेवता सर्व प्रजातींमधील मादींच्या हक्कांपर्यंत विस्तार करणे.
 

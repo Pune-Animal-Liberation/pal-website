@@ -65,7 +65,7 @@ const formattedDate = post.data.date.toLocaleDateString("en-IN", {
   <div class="post">
     {
       post.data.image && (
-        <img src={post.data.image} alt="" class="post__cover" width="800" height="400" />
+        <img src={post.data.image} alt={post.data.imageAlt || ''} class="post__cover" width="800" height="400" />
       )
     }
 

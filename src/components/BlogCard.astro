@@ -2,25 +2,27 @@
 interface Props {
   title: string;
   date: Date;
-  url: string;
   author?: string;
-  image?: string;
+  thumbnail?: string;
+  thumbnailAlt?: string;
+  url: string;
 }
 
-const { title, date, url, author, image } = Astro.props;
+const { title, date, author, thumbnail, thumbnailAlt, url } = Astro.props;
 
 const formattedDate = date.toLocaleDateString("en-IN", {
   year: "numeric",
   month: "long",
   day: "numeric",
 });
+
 ---
 
 <article class="card">
   {
-    image && (
+    thumbnail && (
       <a href={url} tabindex="-1" aria-hidden="true">
-        <img src={image} alt="" class="card__image" width="400" height="225" />
+        <img src={thumbnail} alt={thumbnailAlt || ''} class="card__image" width="400" height="225" />
       </a>
     )
   }

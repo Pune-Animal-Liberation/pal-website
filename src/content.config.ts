@@ -7,7 +7,10 @@ const blog = defineCollection({
     title: z.string(),
     date: z.date(),
     author: z.string().optional(),
+    thumbnail: z.string().optional(),
     image: z.string().optional(),
+    thumbnailAlt: z.string().optional(),
+    imageAlt: z.string().optional(),
     slug: z.string().optional(),
   })
 });

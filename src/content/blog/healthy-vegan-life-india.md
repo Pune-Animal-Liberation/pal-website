@@ -2,7 +2,10 @@
 title: "Healthy Vegan Living in India: A Complete Guide"
 date: 2026-03-18
 author: Otto
-image: /images/vegan-healthy-food.jpg
+thumbnail: /images/vegan-healthy-food-optimized.webp
+image: /images/vegan-healthy-food-cover.jpg
+thumbnailAlt: "Colorful array of healthy vegan Indian foods"
+imageAlt: "Colorful array of healthy vegan Indian foods - full size"
 ---
 
 Living a healthy vegan life in India is not only possible but can be incredibly nutritious and delicious. With India's rich tradition of vegetarian cuisine and abundant plant-based foods, you have everything you need to thrive on a vegan diet.

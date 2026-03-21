@@ -104,7 +104,8 @@ const upcomingEvents = allEvents
               title={post.data.title}
               date={post.data.date}
               author={post.data.author}
-              image={post.data.image}
+              thumbnail={post.data.thumbnail}
+              thumbnailAlt={post.data.thumbnailAlt}
               url={`/blog/${post.data.slug ?? post.id}/`}
             />
           ))}

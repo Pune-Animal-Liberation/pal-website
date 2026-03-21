@@ -20,9 +20,9 @@ export default defineConfig({
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ['astro'],
-          },
+          assetFileNames: 'assets/[name].[hash].[ext]',
+          chunkFileNames: 'assets/[name].[hash].js',
+          entryFileNames: 'assets/[name].[hash].js',
         },
       },
     },
