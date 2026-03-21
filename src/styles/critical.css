@@ -5,7 +5,7 @@
   --color-text: #1a2e1a;
   --color-primary: #40916c;
   --color-primary-dark: #2d6a4f;
-  --color-dark-bg: #1a4d2e;
+  --color-dark-bg: #0d2818;
   --color-dark-text: #ffffff;
   --font-sans: system-ui, 'Helvetica Neue', Arial, sans-serif;
   --font-size-4xl: 3.5rem;
@@ -175,7 +175,7 @@ p {
 
 .hero__subtitle {
   font-size: var(--font-size-lg);
-  color: #b7e4c7;
+  color: #d4f1e0;
   max-width: 600px;
   margin: 0 auto 2rem;
   line-height: 1.5;
