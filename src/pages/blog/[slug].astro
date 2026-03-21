@@ -87,80 +87,63 @@ const formattedDate = post.data.date.toLocaleDateString("en-IN", {
     <!-- Comments -->
     <div id="remark42"></div>
 
-    <script>
-      // Only load comments if user interacts
-      let commentsLoaded = false;
-      
-      function loadComments() {
-        if (commentsLoaded) return;
-        commentsLoaded = true;
-        
-        window.remark_config = {
-          host: "https://comments.puneanimalliberation.com",
-          site_id: "puneanimal",
-          theme: 'light',
-          page_title: document.title,
-          url: `https://puneanimalliberation.com${location.pathname}`,
-          max_shown_comments: 15,
-          show_email_subscription: false,
-          simple_view: false,
-          no_footer: false,
-          hide_anonymous: false,
-          enable_backlinks: false,
-          show_rss_subscription: false,
-          show_upvotes: false,
-          show_downvotes: false,
-        };
+    <script is:inline>
+      // Load comments immediately
+      window.remark_config = {
+        host: "https://comments.puneanimalliberation.com",
+        site_id: "puneanimal",
+        theme: 'light',
+        page_title: document.title,
+        url: window.location.origin + window.location.pathname,
+        max_shown_comments: 15,
+        show_email_subscription: false,
+        simple_view: false,
+        no_footer: false,
+        hide_anonymous: false,
+        enable_backlinks: false,
+        show_rss_subscription: false,
+        show_upvotes: false,
+        show_downvotes: false,
+      };
 
-        const s = document.createElement("script");
-        s.src = "https://comments.puneanimalliberation.com/web/embed.js";
+      // Load embed script
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://comments.puneanimalliberation.com/web/embed.js';
         s.defer = true;
-        document.body.appendChild(s);
+        (d.head || d.body).appendChild(s);
+      })();
 
-        // Load comment count
-        const counter = document.querySelector(".remark42__counter") as HTMLElement;
+      // Update counter when comments load
+      window.addEventListener('load', function() {
+        const counter = document.querySelector('.remark42__counter');
         if (counter) {
-          const url = counter.dataset.url;
-          fetch(`https://comments.puneanimalliberation.com/api/v1/count?site=puneanimal&url=${url}`)
-            .then(res => res.json())
-            .then(data => {
+          const url = counter.getAttribute('data-url');
+          fetch('https://comments.puneanimalliberation.com/api/v1/count?site=puneanimal&url=' + encodeURIComponent(url))
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
               const count = data.count || 0;
-              counter.textContent = `${count} ${count === 1 ? 'comment' : 'comments'} on ${post.data.title}`;
+              counter.textContent = count + (count === 1 ? ' comment' : ' comments');
             })
-            .catch(() => {
-              counter.textContent = `No comments on ${post.data.title}`;
+            .catch(function() {
+              counter.textContent = '0 comments';
             });
         }
 
-        // Remove admin controls
-        setTimeout(() => {
-          const adminButtons = document.querySelectorAll('.remark42__comment-actions button[title*="Hide"], .remark42__comment-actions button[title*="Show"], .remark42__comment-actions button[title*="Delete"], .remark42__comment-actions button[title*="Edit"], .remark42__comment-actions button[title*="Verify"]');
-          adminButtons.forEach(btn => {
-            (btn as HTMLElement).style.display = 'none';
-            (btn as HTMLElement).remove();
+        // Remove admin controls after comments load
+        setTimeout(function() {
+          var adminButtons = document.querySelectorAll('.remark42__comment-actions button[title*="Hide"], .remark42__comment-actions button[title*="Show"], .remark42__comment-actions button[title*="Delete"], .remark42__comment-actions button[title*="Edit"], .remark42__comment-actions button[title*="Verify"]');
+          adminButtons.forEach(function(btn) {
+            btn.style.display = 'none';
+            btn.remove();
           });
 
-          const moderationElements = document.querySelectorAll('.remark42__moderation, .remark42__moderation-panel, .remark42__hidden-comments-notice, .remark42__show-hidden-comments');
-          moderationElements.forEach(el => {
-            (el as HTMLElement).style.display = 'none';
-            (el as HTMLElement).remove();
+          var moderationElements = document.querySelectorAll('.remark42__moderation, .remark42__moderation-panel, .remark42__hidden-comments-notice, .remark42__show-hidden-comments');
+          moderationElements.forEach(function(el) {
+            el.style.display = 'none';
+            el.remove();
           });
         }, 2000);
-      }
-
-      // Load comments when user scrolls near bottom or clicks comment counter
-      window.addEventListener("load", function () {
-        const counter = document.querySelector(".remark42__counter") as HTMLElement;
-        if (counter) {
-          counter.addEventListener("click", loadComments);
-        }
-        
-        // Load comments when scrolling near bottom
-        window.addEventListener("scroll", function() {
-          if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
-            loadComments();
-          }
-        }, { once: true });
       });
     </script>
 

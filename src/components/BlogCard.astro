@@ -36,39 +36,4 @@ const formattedDate = date.toLocaleDateString("en-IN", {
   <a href={url} class="card__link" aria-label={`Read: ${title}`}
     >Read More &rarr;</a
   >
-  <a
-    href={url}
-    class="remark42__counter"
-    data-url={`https://puneanimalliberation.com${url}`}
-    data-card-url={url}
-    aria-label={`Comments on ${title}`}
-  >
-    Loading comments...
-  </a>
 </article>
-
-<script define:vars={{ url, title }}>
-  // Load comment count for this card when DOM is ready
-  document.addEventListener('DOMContentLoaded', function() {
-    // Use a more specific selector to avoid conflicts
-    const counter = document.querySelector(`[data-card-url="${url}"]:not([data-loaded])`);
-    if (counter) {
-      // Mark as loaded to prevent duplicate processing
-      counter.setAttribute('data-loaded', 'true');
-      const apiUrl = counter.dataset.url;
-
-      // Add small delay to avoid race conditions
-      setTimeout(() => {
-        fetch(`https://comments.puneanimalliberation.com/api/v1/count?site=puneanimal&url=${encodeURIComponent(apiUrl)}`)
-          .then(res => res.json())
-          .then(data => {
-            const count = data.count || 0;
-            counter.textContent = `${count} ${count === 1 ? 'comment' : 'comments'} on ${title}`;
-          })
-          .catch(() => {
-            counter.textContent = `No comments on ${title}`;
-          });
-      }, Math.random() * 500 + 100); // Random delay between 100-600ms
-    }
-  });
-</script>
