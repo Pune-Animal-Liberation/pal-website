@@ -3,7 +3,7 @@ title: Why Animal Liberation?
 date: 2026-03-13
 author: Pravin Chaudhary
 image: /images/dove-released.webp
-thumbnail: /images/dove-released.webp
+thumbnail: /images/dove-released-optimized.webp
 thumbnailAlt: White dove being released into the sky symbolizing freedom and liberation
 ---
 Many people say they “love animals.” They adore puppies, share videos of cute kittens, and feel affection for pets. But animal liberation asks a deeper question: **is love enough if the animal is not free?**

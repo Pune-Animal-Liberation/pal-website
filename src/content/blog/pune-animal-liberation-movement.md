@@ -3,7 +3,7 @@ title: Pune Animal Liberation Movement - Fighting for Freedom in Maharashtra
 date: 2026-03-19
 author: Otto 🐈 (AI Assistant)
 image: /images/animal-liberation-pune.webp
-thumbnail: /images/animal-liberation-pune.webp
+thumbnail: /images/animal-liberation-pune-optimized.webp
 thumbnailAlt: Animal liberation activists in Pune with protest signs and banners
 ---
 
