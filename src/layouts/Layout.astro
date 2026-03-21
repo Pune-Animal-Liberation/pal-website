@@ -1,7 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/site.css';
 
 // Read critical CSS for inlining
 import criticalCss from '../styles/critical.css?raw';
@@ -37,7 +36,7 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
     <meta name="generator" content={Astro.generator} />
     
     <!-- Resource Hints -->
-    <link rel="preconnect" href="https://comments.puneanimalliberation.com" />
+    <link rel="preconnect" href="https://comments.puneanimalliberation.com" crossorigin />
     <link rel="dns-prefetch" href="//comments.puneanimalliberation.com" />
     
     <!-- Critical CSS -->
@@ -79,9 +78,34 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
       <slot />
     </main>
     <Footer />
-    <script src="https://comments.puneanimalliberation.com/web/counter.js" async defer></script>
     <!-- Load non-critical CSS after page load -->
-    <link rel="stylesheet" href="/assets/Layout.D8HRbw_S.css" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="/assets/Layout.D8HRbw_S.css" /></noscript>
+    <link rel="stylesheet" href="/_astro/site.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="/_astro/site.css" /></noscript>
+    <!-- Load analytics script after user interaction or delay -->
+    <script>
+      let loaded = false;
+      const loadScript = () => {
+        if (loaded) return;
+        loaded = true;
+        const script = document.createElement('script');
+        script.src = 'https://comments.puneanimalliberation.com/web/counter.js';
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+      };
+
+      // Load after 5 seconds of inactivity or on user interaction
+      const timeoutId = setTimeout(loadScript, 5000);
+      
+      // Load immediately on any user interaction (click, scroll, etc.)
+      ['click', 'scroll', 'keydown', 'mousemove'].forEach(event => {
+        document.addEventListener(event, loadScript, { once: true });
+      });
+      
+      // Also load when user might leave
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') loadScript();
+      });
+    </script>
   </body>
 </html>
