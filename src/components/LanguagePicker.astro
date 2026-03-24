@@ -7,7 +7,6 @@ const currentPath = Astro.url.pathname;
 
 // A simple helper to get the path without the language prefix
 function getPathWithoutLang(path: string, lang: string) {
-  if (lang === 'en') return path;
   if (path.startsWith(`/${lang}/`)) return path.replace(`/${lang}/`, '/');
   if (path === `/${lang}`) return '/';
   return path;
@@ -20,9 +19,7 @@ const basePath = getPathWithoutLang(currentPath, currentLang);
   <select id="lang-select" aria-label="Select Language">
     {Object.entries(languages).map(([lang, label]) => {
       // Reconstruct path for this language
-      const targetPath = lang === 'en'
-        ? basePath
-        : `/${lang}${basePath === '/' ? '/' : basePath}`;
+      const targetPath = `/${lang}${basePath === '/' ? '/' : basePath}`;
 
       return (
         <option value={targetPath} selected={currentLang === lang}>

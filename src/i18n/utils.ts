@@ -36,9 +36,6 @@ export function getPathWithLang(route: string, lang: string) {
     cleanedRoute = cleanedRoute.slice(0, -1);
   }
 
-  if (lang === defaultLang) {
-    return cleanedRoute === '' ? '/' : `/${cleanedRoute}/`;
-  }
-
+  // With prefixDefaultLocale: true, all locales including English have a prefix
   return cleanedRoute === '' ? `/${lang}/` : `/${lang}/${cleanedRoute}/`;
 }
