@@ -1,0 +1,64 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl, getRouteFromUrl, useTranslations } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+// A simple helper to get the path without the language prefix
+function getPathWithoutLang(path: string, lang: string) {
+  if (lang === 'en') return path;
+  if (path.startsWith(`/${lang}/`)) return path.replace(`/${lang}/`, '/');
+  if (path === `/${lang}`) return '/';
+  return path;
+}
+
+const basePath = getPathWithoutLang(currentPath, currentLang);
+---
+
+<div class="language-picker">
+  <select id="lang-select" aria-label="Select Language">
+    {Object.entries(languages).map(([lang, label]) => {
+      // Reconstruct path for this language
+      const targetPath = lang === 'en'
+        ? basePath
+        : `/${lang}${basePath === '/' ? '/' : basePath}`;
+
+      return (
+        <option value={targetPath} selected={currentLang === lang}>
+          {label}
+        </option>
+      );
+    })}
+  </select>
+</div>
+
+<script>
+  const select = document.getElementById('lang-select') as HTMLSelectElement;
+  select?.addEventListener('change', (e) => {
+    const targetUrl = (e.target as HTMLSelectElement).value;
+
+    // Determine language from URL value to save preference
+    let langToSave = 'en';
+    if (targetUrl.startsWith('/hi')) langToSave = 'hi';
+    if (targetUrl.startsWith('/mr')) langToSave = 'mr';
+
+    document.cookie = `preferred_lang=${langToSave}; path=/; max-age=31536000`; // 1 year
+    window.location.href = targetUrl;
+  });
+</script>
+
+<style>
+  .language-picker select {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .language-picker select:focus {
+    outline: 2px solid var(--color-primary);
+  }
+</style>

@@ -1,14 +1,18 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../../layouts/Layout.astro";
 import { getCollection, type CollectionEntry, render } from "astro:content";
+import { languages } from "../../../i18n/ui";
+import { useTranslations, getPathWithLang } from "../../../i18n/utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
 
-  return posts.map((post) => ({
-    params: { slug: post.data.slug ?? post.id },
-    props: { post },
-  }));
+  return Object.keys(languages).flatMap((lang) => {
+    return posts.map((post) => ({
+      params: { lang, slug: post.data.slug ?? post.id },
+      props: { post },
+    }));
+  });
 }
 
 type Props = {
@@ -16,9 +20,11 @@ type Props = {
 };
 
 const { post } = Astro.props;
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 const { Content } = await render(post);
 
-const formattedDate = post.data.date.toLocaleDateString("en-IN", {
+const formattedDate = post.data.date.toLocaleDateString(t('date.format'), {
   year: "numeric",
   month: "long",
   day: "numeric",
@@ -147,6 +153,6 @@ const formattedDate = post.data.date.toLocaleDateString("en-IN", {
       });
     </script>
 
-    <a href="/blog/" class="btn btn--secondary mt-md">&larr; Back to Blog</a>
+    <a href={getPathWithLang('/blog/', lang as string)} class="btn btn--secondary mt-md">&larr; {t('nav.blog')}</a>
   </div>
 </Layout>

@@ -1,9 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { languages } from '../../i18n/ui';
+import { useTranslations, getPathWithLang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 ---
 
 <Layout
-  title="Resources"
+  title={t('nav.resources')}
   description="Vegan and animal rights resources to help you learn, grow, and take action."
 >
   <div class="page-header">
@@ -96,6 +105,6 @@ import Layout from '../layouts/Layout.astro';
 
     <h2>Questions?</h2>
     <p>If you need help or have questions about veganism or animal rights, we're here.</p>
-    <a href="/contact/" class="btn btn--primary">Contact Us</a>
+    <a href={getPathWithLang('/contact/', lang as string)} class="btn btn--primary">{t('nav.contact')}</a>
   </div>
 </Layout>

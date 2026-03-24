@@ -1,14 +1,18 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { getCollection, type CollectionEntry, render } from 'astro:content';
+import { languages } from '../../../i18n/ui';
+import { useTranslations, getPathWithLang } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
 
-  return events.map((event) => ({
-    params: { slug: event.data.slug ?? event.id },
-    props: { event },
-  }));
+  return Object.keys(languages).flatMap((lang) => {
+    return events.map((event) => ({
+      params: { lang, slug: event.data.slug ?? event.id },
+      props: { event },
+    }));
+  });
 }
 
 type Props = {
@@ -16,9 +20,11 @@ type Props = {
 };
 
 const { event } = Astro.props;
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 const { Content } = await render(event);
 
-const formattedDate = event.data.date.toLocaleDateString('en-IN', {
+const formattedDate = event.data.date.toLocaleDateString(t('date.format'), {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
@@ -66,6 +72,6 @@ const formattedDate = event.data.date.toLocaleDateString('en-IN', {
     <div class="post__body">
       <Content />
     </div>
-    <a href="/events/" class="btn btn--secondary mt-md">&larr; Back to Events</a>
+    <a href={getPathWithLang('/events/', lang as string)} class="btn btn--secondary mt-md">&larr; {t('nav.events')}</a>
   </div>
 </Layout>

@@ -1,42 +1,48 @@
 ---
+import { getLangFromUrl, useTranslations, getPathWithLang } from '../i18n/utils';
+import LanguagePicker from './LanguagePicker.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/events/', label: 'Events' },
-  { href: '/get-involved/', label: 'Get Involved' },
-  { href: '/resources/', label: 'Resources' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/', label: t('nav.home') },
+  { href: '/about/', label: t('nav.about') },
+  { href: '/blog/', label: t('nav.blog') },
+  { href: '/events/', label: t('nav.events') },
+  { href: '/get-involved/', label: t('nav.get_involved') },
+  { href: '/resources/', label: t('nav.resources') },
+  { href: '/contact/', label: t('nav.contact') },
 ];
 ---
 
 <nav class="nav" aria-label="Main navigation">
   <div class="container">
     <div class="nav__inner">
-      <a href="/" class="nav__brand" aria-label="Pune Animal Liberation — Home">
+      <a href={getPathWithLang('/', lang)} class="nav__brand" aria-label="Pune Animal Liberation — Home">
         <img src="/favicon-optimized.png" alt="Pune Animal Liberation logo" class="nav__logo" width="40" height="40" loading="lazy" decoding="async" />
       </a>
       <ul class="nav__links" role="list">
-        {links.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              aria-current={
-                link.href === '/'
-                  ? currentPath === '/'
-                    ? 'page'
-                    : undefined
-                  : currentPath.startsWith(link.href)
-                    ? 'page'
-                    : undefined
-              }
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
+        {links.map((link) => {
+          const localizedHref = getPathWithLang(link.href, lang);
+          const isCurrentPage = localizedHref === '/'
+            ? currentPath === '/' || currentPath === `/${lang}/`
+            : currentPath.startsWith(localizedHref.replace(/\/$/, ''));
+          return (
+            <li>
+              <a
+                href={localizedHref}
+                aria-current={isCurrentPage ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
+        <li>
+          <LanguagePicker />
+        </li>
       </ul>
     </div>
   </div>

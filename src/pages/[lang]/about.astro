@@ -1,5 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { languages } from '../../i18n/ui';
+import { useTranslations, getPathWithLang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 ---
 
 <Layout
@@ -82,6 +91,6 @@ import Layout from '../layouts/Layout.astro';
       Whether you're a long-time vegan activist or someone just beginning to question your
       relationship with animals, there's a place for you in PAL.
     </p>
-    <a href="/get-involved/" class="btn btn--primary">Get Involved</a>
+    <a href={getPathWithLang('/get-involved/', lang as string)} class="btn btn--primary">{t('nav.get_involved')}</a>
   </div>
 </Layout>
