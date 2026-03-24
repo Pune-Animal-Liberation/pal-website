@@ -1,10 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import EventCard from '../components/EventCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import EventCard from '../../components/EventCard.astro';
 import { getCollection } from 'astro:content';
+import { languages } from '../../i18n/ui';
+import { useTranslations, getPathWithLang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 
 const events = await getCollection('events');
-const sortedEvents = events.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const sortedEvents = events
+  .filter((e) => {
+    const isCurrentLang = e.id.endsWith(`-${lang}.md`) || e.id.endsWith(`-${lang}.mdx`);
+    const isDefaultLang = !e.id.includes('-hi.') && !e.id.includes('-mr.');
+    if (lang === 'en') return isDefaultLang;
+    if (isCurrentLang) return true;
+    const hasTranslation = events.some(other => other.id === e.id.replace(/\.md(x)?$/, `-${lang}.md$1`));
+    return isDefaultLang && !hasTranslation;
+  })
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 ---
 
 <Layout
@@ -55,7 +73,7 @@ const sortedEvents = events.sort((a, b) => a.data.date.valueOf() - b.data.date.v
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              url={`/events/${event.data.slug ?? event.id}/`}
+              url={getPathWithLang(`/events/${event.data.slug ?? event.id}/`, lang as string)}
             />
           ))}
         </div>

@@ -1,10 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import BlogCard from '../components/BlogCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
+import { languages } from '../../i18n/ui';
+import { useTranslations, getPathWithLang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 
 const posts = await getCollection('blog');
-const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedPosts = posts
+  .filter((post) => {
+    const isCurrentLang = post.id.endsWith(`-${lang}.md`) || post.id.endsWith(`-${lang}.mdx`);
+    const isDefaultLang = !post.id.includes('-hi.') && !post.id.includes('-mr.');
+    if (lang === 'en') return isDefaultLang;
+    if (isCurrentLang) return true;
+    const hasTranslation = posts.some(p => p.id === post.id.replace(/\.md(x)?$/, `-${lang}.md$1`));
+    return isDefaultLang && !hasTranslation;
+  })
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout 
@@ -56,7 +74,7 @@ const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.val
               author={post.data.author}
               thumbnail={post.data.thumbnail}
               thumbnailAlt={post.data.thumbnailAlt}
-              url={`/blog/${post.data.slug ?? post.id}/`}
+              url={getPathWithLang(`/blog/${post.data.slug ?? post.id}/`, lang as string)}
             />
           ))}
         </div>

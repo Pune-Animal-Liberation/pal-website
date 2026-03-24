@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
 interface Props {
   title: string;
   date: Date;
@@ -7,8 +9,10 @@ interface Props {
 }
 
 const { title, date, location, url } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-const formattedDate = date.toLocaleDateString('en-IN', {
+const formattedDate = date.toLocaleDateString(t('date.format'), {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
@@ -27,7 +31,7 @@ const formattedDate = date.toLocaleDateString('en-IN', {
       <span>{location}</span>
     </p>
   )}
-  <a href={url} class="card__link card__link--event" aria-label={`Event details: ${title}`}>
-    Details &rarr;
+  <a href={url} class="card__link card__link--event" aria-label={`${t('btn.view_details')}: ${title}`}>
+    {t('btn.view_details')} &rarr;
   </a>
 </article>

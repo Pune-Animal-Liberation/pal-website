@@ -1,9 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { languages } from '../../i18n/ui';
+import { useTranslations, getPathWithLang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 ---
 
 <Layout
-  title="Contact"
+  title={t('nav.contact')}
   description="Get in touch with Pune Animal Liberation. We'd love to hear from you."
 >
   <div class="page-header">
@@ -49,7 +58,7 @@ import Layout from '../layouts/Layout.astro';
       The best way to connect with us is in person. Check our events page for upcoming outreach
       sessions and activities where you can meet the team.
     </p>
-    <a href="/events/" class="btn btn--primary">View Events</a>
+    <a href={getPathWithLang('/events/', lang as string)} class="btn btn--primary">{t('nav.events')}</a>
 
     <h2>Press Enquiries</h2>
     <p>

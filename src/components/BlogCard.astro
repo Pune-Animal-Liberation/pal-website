@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
 interface Props {
   title: string;
   date: Date;
@@ -9,8 +11,10 @@ interface Props {
 }
 
 const { title, date, author, thumbnail, thumbnailAlt, url } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-const formattedDate = date.toLocaleDateString("en-IN", {
+const formattedDate = date.toLocaleDateString(t('date.format'), {
   year: "numeric",
   month: "long",
   day: "numeric",
@@ -33,7 +37,7 @@ const formattedDate = date.toLocaleDateString("en-IN", {
   <h3 class="card__title">
     <a href={url}>{title}</a>
   </h3>
-  <a href={url} class="card__link" aria-label={`Read: ${title}`}
-    >Read More &rarr;</a
+  <a href={url} class="card__link" aria-label={`${t('btn.read_more')}: ${title}`}
+    >{t('btn.read_more')} &rarr;</a
   >
 </article>

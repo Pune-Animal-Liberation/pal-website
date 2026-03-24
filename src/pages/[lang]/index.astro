@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import EventCard from '../../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+import { languages } from '../../i18n/ui';
+import { useTranslations, getPathWithLang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
+
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+  .filter((post) => {
+    const isCurrentLang = post.id.endsWith(`-${lang}.md`) || post.id.endsWith(`-${lang}.mdx`);
+    const isDefaultLang = !post.id.includes('-hi.') && !post.id.includes('-mr.');
+    // Show current language, or English if current language translation doesn't exist
+    if (lang === 'en') return isDefaultLang;
+    if (isCurrentLang) return true;
+    // Fallback: only show English if the localized version is missing
+    const hasTranslation = allPosts.some(p => p.id === post.id.replace(/\.md(x)?$/, `-${lang}.md$1`));
+    return isDefaultLang && !hasTranslation;
+  })
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const allEvents = await getCollection('events');
+const upcomingEvents = allEvents
+  .filter((e) => {
+    const isCurrentLang = e.id.endsWith(`-${lang}.md`) || e.id.endsWith(`-${lang}.mdx`);
+    const isDefaultLang = !e.id.includes('-hi.') && !e.id.includes('-mr.');
+    let shouldInclude = false;
+    if (lang === 'en') {
+      shouldInclude = isDefaultLang;
+    } else {
+      if (isCurrentLang) shouldInclude = true;
+      else {
+        const hasTranslation = allEvents.some(other => other.id === e.id.replace(/\.md(x)?$/, `-${lang}.md$1`));
+        shouldInclude = isDefaultLang && !hasTranslation;
+      }
+    }
+    return shouldInclude && e.data.date >= today;
+  })
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<Layout
+  title={t('nav.home')}
+  description="Pune Animal Liberation fights for the rights of all animals. Join our movement in Pune, India."
+  image="/images/og-home.jpg"
+>
+  <!-- Structured Data for Organization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Pune Animal Liberation",
+    "url": "https://puneanimalliberation.com",
+    "logo": "https://puneanimalliberation.com/images/logo.png",
+    "description": "Pune Animal Liberation fights for the rights of all animals in Pune, India. Join our movement for animal rights and veganism.",
+    "sameAs": [
+      "https://puneanimalliberation.com"
+    ],
+    "areaServed": {
+      "@type": "Place",
+      "name": "Pune, India"
+    },
+    "knowsAbout": [
+      "animal rights",
+      "veganism",
+      "animal welfare",
+      "animal liberation",
+      "activism"
+    ]
+  }, null, 2)} />
+  <Hero
+    title={t('home.hero.title')}
+    subtitle={t('home.hero.subtitle')}
+    ctaText={t('home.hero.cta')}
+    ctaHref={getPathWithLang('/get-involved/', lang as string)}
+  />
+
+  <!-- Mission -->
+  <section class="section" aria-labelledby="mission-heading">
+    <div class="container">
+      <div class="mission">
+        <h2 id="mission-heading" class="section-heading">{t('home.mission.title')}</h2>
+        <p class="mission__text">
+          {t('home.mission.text')}
+        </p>
+        <a href={getPathWithLang('/about/', lang as string)} class="btn btn--secondary">{t('home.mission.btn')}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  {upcomingEvents.length > 0 && (
+    <section class="section section--grey" aria-labelledby="events-preview-heading">
+      <div class="container">
+        <h2 id="events-preview-heading" class="section-heading">{t('home.events.title')}</h2>
+        <div class="cards-grid">
+          {upcomingEvents.map((event) => (
+            <EventCard
+              title={event.data.title}
+              date={event.data.date}
+              location={event.data.location}
+              url={getPathWithLang(`/events/${event.data.slug ?? event.id}/`, lang as string)}
+            />
+          ))}
+        </div>
+        <div class="mt-md">
+          <a href={getPathWithLang('/events/', lang as string)} class="btn btn--primary">{t('home.events.btn')}</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Recent Posts -->
+  {recentPosts.length > 0 && (
+    <section class="section" aria-labelledby="blog-preview-heading">
+      <div class="container">
+        <h2 id="blog-preview-heading" class="section-heading">{t('home.blog.title')}</h2>
+        <div class="cards-grid">
+          {recentPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              date={post.data.date}
+              author={post.data.author}
+              thumbnail={post.data.thumbnail}
+              thumbnailAlt={post.data.thumbnailAlt}
+              url={getPathWithLang(`/blog/${post.data.slug ?? post.id}/`, lang as string)}
+            />
+          ))}
+        </div>
+        <div class="mt-md">
+          <a href={getPathWithLang('/blog/', lang as string)} class="btn btn--primary">{t('home.blog.btn')}</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading">{t('home.cta.title')}</h2>
+      <p>
+        {t('home.cta.text')}
+      </p>
+      <a href={getPathWithLang('/get-involved/', lang as string)} class="btn">{t('home.cta.btn')}</a>
+    </div>
+  </section>
+</Layout>

@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations, getPathWithLang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
 ---
 
@@ -8,29 +12,29 @@ const year = new Date().getFullYear();
       <div>
         <p class="footer__brand">PAL</p>
         <p class="footer__tagline">
-          Pune Animal Liberation — fighting for the rights of every living being in Pune, India.
+          {t('footer.description')}
         </p>
       </div>
       <div>
-        <p class="footer__heading">Explore</p>
+        <p class="footer__heading">{t('footer.quick_links')}</p>
         <ul class="footer__links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/events/">Events</a></li>
+          <li><a href={getPathWithLang('/', lang)}>{t('nav.home')}</a></li>
+          <li><a href={getPathWithLang('/about/', lang)}>{t('nav.about')}</a></li>
+          <li><a href={getPathWithLang('/blog/', lang)}>{t('nav.blog')}</a></li>
+          <li><a href={getPathWithLang('/events/', lang)}>{t('nav.events')}</a></li>
         </ul>
       </div>
       <div>
-        <p class="footer__heading">Take Action</p>
+        <p class="footer__heading">{t('footer.connect')}</p>
         <ul class="footer__links">
-          <li><a href="/get-involved/">Get Involved</a></li>
-          <li><a href="/resources/">Resources</a></li>
-          <li><a href="/contact/">Contact</a></li>
+          <li><a href={getPathWithLang('/get-involved/', lang)}>{t('nav.get_involved')}</a></li>
+          <li><a href={getPathWithLang('/resources/', lang)}>{t('nav.resources')}</a></li>
+          <li><a href={getPathWithLang('/contact/', lang)}>{t('nav.contact')}</a></li>
         </ul>
       </div>
     </div>
     <p class="footer__bottom">
-      &copy; {year} Pune Animal Liberation. All rights reserved.
+      &copy; {year} {t('footer.copyright')}
     </p>
   </div>
 </footer>

@@ -1,9 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { languages } from '../../i18n/ui';
+import { useTranslations, getPathWithLang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
 ---
 
 <Layout
-  title="Get Involved"
+  title={t('nav.get_involved')}
   description="Join Pune Animal Liberation and help us fight for animal rights in Pune, India."
 >
   <div class="page-header">
@@ -20,7 +29,7 @@ import Layout from '../layouts/Layout.astro';
       across Pune, where we meet the public, share information, and have meaningful conversations
       about animal rights. No experience necessary — we'll train you.
     </p>
-    <a href="/events/" class="btn btn--primary">View Upcoming Events</a>
+    <a href={getPathWithLang('/events/', lang as string)} class="btn btn--primary">View Upcoming Events</a>
 
     <h2>Go Vegan</h2>
     <p>
@@ -28,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
       meal is a choice that affects animals, the planet, and public health. We're here to help you
       make that transition.
     </p>
-    <a href="/resources/" class="btn btn--green">Vegan Resources</a>
+    <a href={getPathWithLang('/resources/', lang as string)} class="btn btn--green">Vegan Resources</a>
 
     <h2>Volunteer With Us</h2>
     <p>PAL is run entirely by volunteers. We need help with:</p>
@@ -48,6 +57,6 @@ import Layout from '../layouts/Layout.astro';
 
     <h2>Contact Us</h2>
     <p>Ready to get involved? Reach out and we'll connect you with the right people.</p>
-    <a href="/contact/" class="btn btn--primary">Get in Touch</a>
+    <a href={getPathWithLang('/contact/', lang as string)} class="btn btn--primary">Get in Touch</a>
   </div>
 </Layout>
