@@ -1,5 +1,5 @@
 ---
-title: Vegan Outreach
+title: Street Outreach
 date: 2026-03-31
 time: 4:00 pm
 location: Sambhaji Garden, JM Road
