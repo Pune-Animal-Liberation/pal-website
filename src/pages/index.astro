@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import WhatWeDo from '../components/WhatWeDo.astro';
 import BlogCard from '../components/BlogCard.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
@@ -18,6 +20,28 @@ const upcomingEvents = allEvents
   .filter((e) => e.data.date >= today)
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .slice(0, 3);
+
+const stats = [
+  { number: '700+', label: 'Animals Helped' },
+  { number: '500M+', label: 'People Reached' },
+  { number: '0', label: 'Corporate Funding' },
+  { number: 'NOW', label: 'Time to Act' }
+];
+
+const whatWeDoCards = [
+  {
+    title: 'Street Activism',
+    description: 'We take to the streets with powerful messages, engaging the public in conversations about animal rights and veganism.'
+  },
+  {
+    title: 'Peaceful Protests',
+    description: 'Through peaceful demonstrations, we raise awareness about animal exploitation and demand systemic change.'
+  },
+  {
+    title: 'Community Events',
+    description: 'We organize events, workshops, and gatherings to build a strong, compassionate community in Pune.'
+  }
+];
 ---
 
 <Layout
@@ -49,31 +73,19 @@ const upcomingEvents = allEvents
     ]
   }, null, 2)} />
   <Hero
-    title="Be Their <em>Voice</em>"
-    subtitle="Pune Animal Liberation stands for the rights of every living being. Join us in the fight for a more compassionate world."
-    ctaText="Get Involved"
+    title="STOP FUNDING <em>ANIMAL CRUELTY.</em>"
+    subtitle="Join Pune Animal Liberation in the fight against animal exploitation. Every action counts in building a more compassionate world."
+    ctaText="Take Action Now"
     ctaHref="/get-involved/"
   />
 
-  <!-- Mission -->
-  <section class="section" aria-labelledby="mission-heading">
-    <div class="container">
-      <div class="mission">
-        <h2 id="mission-heading" class="section-heading">Our Mission</h2>
-        <p class="mission__text">
-          Pune Animal Liberation (PAL) is a grassroots activist group based in Pune, India. We
-          believe all animals deserve to live free from exploitation and suffering. Through
-          outreach, education, and direct action, we work to build a world where every creature is
-          treated with dignity and respect.
-        </p>
-        <a href="/about/" class="btn btn--secondary">Learn More About PAL</a>
-      </div>
-    </div>
-  </section>
+  <Stats stats={stats} />
+
+  <WhatWeDo cards={whatWeDoCards} />
 
   <!-- Upcoming Events -->
   {upcomingEvents.length > 0 && (
-    <section class="section section--grey" aria-labelledby="events-preview-heading">
+    <section class="section" aria-labelledby="events-preview-heading">
       <div class="container">
         <h2 id="events-preview-heading" class="section-heading">Upcoming Events</h2>
         <div class="cards-grid">
@@ -93,39 +105,14 @@ const upcomingEvents = allEvents
     </section>
   )}
 
-  <!-- Recent Posts -->
-  {recentPosts.length > 0 && (
-    <section class="section" aria-labelledby="blog-preview-heading">
-      <div class="container">
-        <h2 id="blog-preview-heading" class="section-heading">Latest Posts</h2>
-        <div class="cards-grid">
-          {recentPosts.map((post) => (
-            <BlogCard
-              title={post.data.title}
-              date={post.data.date}
-              author={post.data.author}
-              thumbnail={post.data.thumbnail}
-              thumbnailAlt={post.data.thumbnailAlt}
-              url={`/blog/${post.data.slug ?? post.id}/`}
-            />
-          ))}
-        </div>
-        <div class="mt-md">
-          <a href="/blog/" class="btn btn--primary">Read the Blog</a>
-        </div>
-      </div>
-    </section>
-  )}
-
   <!-- CTA -->
   <section class="cta-section" aria-labelledby="cta-heading">
     <div class="container">
-      <h2 id="cta-heading">Ready to Make a Difference?</h2>
+      <h2 id="cta-heading">READY TO ACT?</h2>
       <p>
-        Every action counts. Join our community of activists and help us build a more compassionate
-        Pune.
+        Join us in the fight for animal liberation. Every voice matters, every action counts. Together we can create real change in Pune.
       </p>
-      <a href="/get-involved/" class="btn">Join the Movement</a>
+      <a href="/get-involved/" class="btn">Join The Movement</a>
     </div>
   </section>
 </Layout>
