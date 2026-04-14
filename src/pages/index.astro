@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Stats from '../components/Stats.astro';
 import WhatWeDo from '../components/WhatWeDo.astro';
-import BlogCard from '../components/BlogCard.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
 
@@ -22,9 +21,9 @@ const upcomingEvents = allEvents
   .slice(0, 3);
 
 const stats = [
-  { number: '700+', label: 'Animals Helped' },
-  { number: '500M+', label: 'People Reached' },
-  { number: '0', label: 'Corporate Funding' },
+  { number: '100+', label: 'Street Outreaches' },
+  { number: 'Thousands of', label: 'People Reached' },
+  { number: 'Zero', label: 'Corporate Funding' },
   { number: 'NOW', label: 'Time to Act' }
 ];
 
@@ -66,7 +65,7 @@ const whatWeDoCards = [
     },
     "knowsAbout": [
       "animal rights",
-      "veganism", 
+      "veganism",
       "animal welfare",
       "animal liberation",
       "activism"
