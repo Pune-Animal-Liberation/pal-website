@@ -1,17 +1,15 @@
 ---
 title: Street Outreach
-date: 2026-05-31
-time: 4:00 pm
-location: Sambhaji Garden, JM Road
-mapLink: https://share.google/cfI5PpQIv0yKxYTyw
-contactPerson: "Prajakta: 9172779579"
+date: 2026-05-09
+time: 6:00 pm
+location: Westside, FC Road
+mapLink: https://maps.app.goo.gl/qB6HJXkpyakyBJF68?g_st=ac
+contactPerson: Supriya – 8805584702
 ---
-Vegan Outreach Alert 
+📢 Weekend Outreach – Animal Rights Activism 🪧
 
-Event Details:
+Join us as we raise awareness about animal exploitation through placards, leaflets, chalktivism, and public outreach.
 
-Initiative: Chalk activism + Leafleting 📜
+Together, we can amplify their voices. 💪🐷
 
-Note: Bring a water bottle along.
-
-Let's come together for justice!
+See you there!
