@@ -17,7 +17,17 @@ const links = [
       <a href="/" class="nav__brand" aria-label="Pune Animal Liberation — Home">
         <img src="/favicon-optimized.png" alt="Pune Animal Liberation logo" class="nav__logo" width="40" height="40" loading="lazy" decoding="async" />
       </a>
-      <ul class="nav__links" role="list">
+      <button
+        class="nav__toggle"
+        id="nav-toggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+      <ul class="nav__links" id="nav-links" role="list">
         {links.map((link) => (
           <li>
             <a
@@ -43,3 +53,25 @@ const links = [
     </div>
   </div>
 </nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = links?.classList.toggle('nav__links--open') ?? false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.classList.toggle('nav__toggle--open', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
+  });
+
+  // Close menu when a link is clicked
+  links?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      links.classList.remove('nav__links--open');
+      toggle?.classList.remove('nav__toggle--open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
+    });
+  });
+</script>
