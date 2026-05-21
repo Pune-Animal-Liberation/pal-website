@@ -957,12 +957,6 @@ li {
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .nav__inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
   .hero {
     padding: var(--spacing-lg) 0;
   }
