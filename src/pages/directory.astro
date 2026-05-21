@@ -27,6 +27,16 @@ import Layout from '../layouts/Layout.astro';
       </p>
     </div>
 
+    <!-- Pune Vegan Food Guide -->
+    <div class="directory__card directory__card--food">
+      <h2>Pune Vegan Food Guide</h2>
+      <ul class="dir-list">
+        <li><a href="https://puneveganrestaurants.carrd.co" target="_blank" rel="noopener noreferrer">👉🏻 Pune Vegan Restaurants 🍽️</a></li>
+        <li><a href="https://puneveganbakeries.carrd.co" target="_blank" rel="noopener noreferrer">👉🏻 Pune Vegan Bakeries 🎂</a></li>
+        <li><a href="https://puneveganicecreams.carrd.co" target="_blank" rel="noopener noreferrer">👉🏻 Pune Vegan Icecreams 🍦</a></li>
+      </ul>
+    </div>
+
     <!-- Follow -->
     <div class="directory__card">
       <h2>Follow</h2>
@@ -130,6 +140,14 @@ import Layout from '../layouts/Layout.astro';
   .directory__card--highlight {
     grid-column: 1 / -1;
     border-left: 4px solid var(--color-accent);
+  }
+
+  .directory__card--food {
+    border-left: 4px solid var(--color-secondary);
+  }
+
+  .directory__card--food h2 {
+    color: var(--color-secondary);
   }
 
   .directory__card--highlight h2 {
