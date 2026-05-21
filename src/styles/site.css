@@ -139,7 +139,7 @@ li {
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-sm);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .nav__brand {
