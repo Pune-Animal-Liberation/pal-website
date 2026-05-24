@@ -1,15 +1,15 @@
 /* ===== CSS Variables ===== */
 :root {
-  --color-bg: #1a1f16;
-  --color-text: #e8e8e8;
-  --color-text-muted: #a8a8a8;
+  --color-bg: #ffffff;
+  --color-text: #1a1f16;
+  --color-text-muted: #6b7280;
   --color-primary: #d4a574;
   --color-primary-dark: #b8915f;
   --color-secondary: #8a9a5b;
-  --color-surface: #252b20;
-  --color-border: #3a4232;
-  --color-dark-bg: #1a1f16;
-  --color-dark-text: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-border: #e5e5e5;
+  --color-dark-bg: #ffffff;
+  --color-dark-text: #1a1f16;
   --color-accent: #ebb549;
   --color-cta-bg: #d4a574;
 
@@ -388,7 +388,7 @@ li {
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-color: var(--color-accent);
 }
 
@@ -600,7 +600,7 @@ li {
 }
 
 .page-header__subtitle {
-  color: #d4f1e0;
+  color: #1b4332;
   font-size: var(--font-size-lg);
   margin-bottom: 0;
 }
