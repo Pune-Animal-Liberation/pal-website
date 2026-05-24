@@ -285,6 +285,7 @@ li {
     border-bottom-color: transparent;
     border-left-color: var(--color-accent);
     background: var(--color-surface);
+    color: #1a1f16;
   }
 
   .nav__cta {
