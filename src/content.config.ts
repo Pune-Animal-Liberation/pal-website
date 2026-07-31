@@ -20,10 +20,25 @@ const events = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
+    endDate: z.date().optional(),
+    status: z.enum(['draft', 'upcoming', 'concluded', 'cancelled', 'postponed']).default('upcoming'),
     location: z.string().optional(),
     time: z.string().optional(),
     mapLink: z.string().url().optional(),
     contactPerson: z.string().optional(),
+    registrationUrl: z.string().url().optional(),
+    coverImage: z.string().optional(),
+    coverImageAlt: z.string().optional(),
+    recapSummary: z.string().optional(),
+    gallery: z.array(z.object({
+      src: z.string(),
+      alt: z.string(),
+    })).default([]),
+    outcomes: z.array(z.string()).default([]),
+    relatedLinks: z.array(z.object({
+      label: z.string(),
+      url: z.string().url(),
+    })).default([]),
     slug: z.string().optional(),
   })
 });

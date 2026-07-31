@@ -1,11 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, type CollectionEntry, render } from 'astro:content';
+import { isPublicEvent, statusLabels } from '../../lib/events';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
 
-  return events.map((event) => ({
+  return events.filter(isPublicEvent).map((event) => ({
     params: { slug: event.data.slug ?? event.id },
     props: { event },
   }));
@@ -24,18 +25,39 @@ const formattedDate = event.data.date.toLocaleDateString('en-IN', {
   month: 'long',
   day: 'numeric',
 });
+const formattedEndDate = event.data.endDate?.toLocaleDateString('en-IN', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const isUpcoming = event.data.status === 'upcoming' || event.data.status === 'postponed';
+const isConcluded = event.data.status === 'concluded';
+const hasRecapFields = Boolean(event.data.recapSummary || event.data.gallery.length > 0 || event.data.outcomes.length > 0 || event.data.relatedLinks.length > 0);
 ---
 
 <Layout title={event.data.title}>
   <div class="page-header">
     <div class="container">
       <h1 class="page-header__title">{event.data.title}</h1>
+      <p class="page-header__subtitle">{statusLabels[event.data.status]}</p>
     </div>
   </div>
 
   <div class="post">
+    <p class={`event-status event-status--${event.data.status}`}>{statusLabels[event.data.status]}</p>
+    {isUpcoming ? (
+      <p class="event-intro">Join us for this upcoming event. Please check the logistics below before attending.</p>
+    ) : isConcluded ? (
+      <p class="event-intro">This event has concluded. Read the recap and see what the community achieved.</p>
+    ) : event.data.status === 'cancelled' ? (
+      <p class="event-intro">This event was cancelled. It is kept here as part of our event history.</p>
+    ) : (
+      <p class="event-intro">This event has been postponed. Please check back for the updated date.</p>
+    )}
     <div class="post__meta-group">
       <p class="post__date">{formattedDate}</p>
+      {formattedEndDate && <p class="post__date"> through {formattedEndDate}</p>}
       {event.data.time && (
         <p class="post__time">
           <span aria-hidden="true">&#x1F550;</span>
@@ -62,6 +84,37 @@ const formattedDate = event.data.date.toLocaleDateString('en-IN', {
         <span aria-hidden="true">&#x1F4D1;</span>
         <span>Contact: {event.data.contactPerson}</span>
       </p>
+    )}
+    {isUpcoming && event.data.registrationUrl && (
+      <p><a class="btn btn--primary" href={event.data.registrationUrl} target="_blank" rel="noopener noreferrer">RSVP / Register</a></p>
+    )}
+
+    {isConcluded && (
+      <section class="event-recap" aria-labelledby="recap-heading">
+        <h2 id="recap-heading">Event Recap</h2>
+        {!hasRecapFields && <p class="event-recap__pending">No additional recap materials have been published yet.</p>}
+        {event.data.recapSummary && <p>{event.data.recapSummary}</p>}
+        {event.data.outcomes.length > 0 && (
+          <div>
+            <h3>Outcomes</h3>
+            <ul>{event.data.outcomes.map((outcome) => <li>{outcome}</li>)}</ul>
+          </div>
+        )}
+        {event.data.gallery.length > 0 && (
+          <div>
+            <h3>Photos</h3>
+            <div class="event-gallery">
+              {event.data.gallery.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
+            </div>
+          </div>
+        )}
+        {event.data.relatedLinks.length > 0 && (
+          <div>
+            <h3>Related Resources</h3>
+            <ul>{event.data.relatedLinks.map((link) => <li><a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a></li>)}</ul>
+          </div>
+        )}
+      </section>
     )}
     <div class="post__body">
       <Content />

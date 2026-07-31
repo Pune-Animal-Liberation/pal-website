@@ -4,9 +4,19 @@ interface Props {
   date: Date;
   location?: string;
   url: string;
+  status?: 'upcoming' | 'concluded' | 'cancelled' | 'postponed';
+  coverImage?: string;
+  coverImageAlt?: string;
 }
 
-const { title, date, location, url } = Astro.props;
+const { title, date, location, url, status, coverImage, coverImageAlt } = Astro.props;
+
+const statusLabels = {
+  upcoming: 'Upcoming',
+  concluded: 'Concluded',
+  cancelled: 'Cancelled',
+  postponed: 'Postponed',
+};
 
 const formattedDate = date.toLocaleDateString('en-IN', {
   weekday: 'long',
@@ -17,6 +27,8 @@ const formattedDate = date.toLocaleDateString('en-IN', {
 ---
 
 <article class="card card--event">
+  {coverImage && <img class="card__image" src={coverImage} alt={coverImageAlt ?? ''} loading="lazy" />}
+  {status && <p class="card__status">{statusLabels[status]}</p>}
   <p class="card__meta">{formattedDate}</p>
   <h3 class="card__title">
     <a href={url}>{title}</a>

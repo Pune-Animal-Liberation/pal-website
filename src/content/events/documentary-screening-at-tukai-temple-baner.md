@@ -1,6 +1,7 @@
 ---
 title: Documentary Screening at Tukai Temple, Baner
 date: 2026-07-29
+status: concluded
 time: 7 PM
 location: Tukai Temple, Baner Hills
 mapLink: https://maps.app.goo.gl/T2Q9BYsmy9ReF8ys9

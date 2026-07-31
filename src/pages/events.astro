@@ -2,12 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
+import { eventUrl, isPastEvent, isPublicEvent, isUpcomingEvent, sortByDateAscending, sortByDateDescending } from '../lib/events';
 
 const events = await getCollection('events');
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-const futureEvents = events.filter(event => event.data.date >= today);
-const sortedEvents = futureEvents.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const publicEvents = events.filter(isPublicEvent);
+const upcomingEvents = publicEvents.filter(isUpcomingEvent).sort(sortByDateAscending);
+const pastEvents = publicEvents.filter(isPastEvent).sort(sortByDateDescending);
 ---
 
 <Layout
@@ -24,7 +24,7 @@ const sortedEvents = futureEvents.sort((a, b) => a.data.date.valueOf() - b.data.
     "url": "https://puneanimalliberation.com/events/",
     "mainEntity": {
       "@type": "ItemList",
-      "itemListElement": sortedEvents.map((event, index) => ({
+      "itemListElement": upcomingEvents.map((event, index) => ({
         "@type": "Event",
         "position": index + 1,
         "name": event.data.title,
@@ -33,7 +33,7 @@ const sortedEvents = futureEvents.sort((a, b) => a.data.date.valueOf() - b.data.
           "@type": "Place",
           "name": event.data.location
         } : undefined,
-        "url": `https://puneanimalliberation.com/events/${event.data.slug ?? event.id}/`,
+        "url": `https://puneanimalliberation.com${eventUrl(event)}`,
         "organizer": {
           "@type": "Organization",
           "name": "Pune Animal Liberation",
@@ -45,25 +45,49 @@ const sortedEvents = futureEvents.sort((a, b) => a.data.date.valueOf() - b.data.
   <div class="page-header">
     <div class="container">
       <h1 class="page-header__title">Events</h1>
-      <p class="page-header__subtitle">Upcoming activism and outreach</p>
+      <p class="page-header__subtitle">Upcoming activism, outreach, and recaps from our work</p>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
-      {sortedEvents.length > 0 ? (
+      <h2 class="section-heading">Upcoming Events</h2>
+      {upcomingEvents.length > 0 ? (
         <div class="cards-grid">
-          {sortedEvents.map((event) => (
+          {upcomingEvents.map((event) => (
             <EventCard
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              url={`/events/${event.data.slug ?? event.id}/`}
+              url={eventUrl(event)}
+              status={event.data.status}
+              coverImage={event.data.coverImage}
+              coverImageAlt={event.data.coverImageAlt}
             />
           ))}
         </div>
       ) : (
         <p>No upcoming events. Check back soon.</p>
+      )}
+
+      <div class="section-divider"></div>
+      <h2 class="section-heading">Past Events</h2>
+      {pastEvents.length > 0 ? (
+        <div class="cards-grid">
+          {pastEvents.map((event) => (
+            <EventCard
+              title={event.data.title}
+              date={event.data.date}
+              location={event.data.location}
+              url={eventUrl(event)}
+              status={event.data.status}
+              coverImage={event.data.coverImage}
+              coverImageAlt={event.data.coverImageAlt}
+            />
+          ))}
+        </div>
+      ) : (
+        <p>No past events yet.</p>
       )}
     </div>
   </section>

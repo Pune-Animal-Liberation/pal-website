@@ -5,19 +5,17 @@ import Stats from '../components/Stats.astro';
 import WhatWeDo from '../components/WhatWeDo.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
+import { eventUrl, isUpcomingEvent, sortByDateAscending } from '../lib/events';
 
 const allPosts = await getCollection('blog');
 const recentPosts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-
 const allEvents = await getCollection('events');
 const upcomingEvents = allEvents
-  .filter((e) => e.data.date >= today)
-  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .filter(isUpcomingEvent)
+  .sort(sortByDateAscending)
   .slice(0, 3);
 
 const stats = [
@@ -97,7 +95,10 @@ const whatWeDoCards = [
               title={event.data.title}
               date={event.data.date}
               location={event.data.location}
-              url={`/events/${event.data.slug ?? event.id}/`}
+              url={eventUrl(event)}
+              status={event.data.status}
+              coverImage={event.data.coverImage}
+              coverImageAlt={event.data.coverImageAlt}
             />
           ))}
         </div>

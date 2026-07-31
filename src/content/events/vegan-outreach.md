@@ -1,6 +1,7 @@
 ---
 title: Street Outreach
 date: 2026-05-09
+status: concluded
 time: 6:00 pm
 location: Westside, FC Road
 mapLink: https://maps.app.goo.gl/qB6HJXkpyakyBJF68?g_st=ac

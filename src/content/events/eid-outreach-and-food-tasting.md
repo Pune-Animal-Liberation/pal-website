@@ -1,6 +1,7 @@
 ---
 title: Eid Outreach & Food Tasting 🌙✨
 date: 2026-03-21
+status: concluded
 time: 6:30 AM to 10:00 AM
 location: Aalamgir Masjid
 mapLink: https://maps.app.goo.gl/92bhU9NL1vqTt55J6

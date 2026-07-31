@@ -48,6 +48,22 @@ content:
         label: Date
         type: date
 
+      - name: endDate
+        label: End Date
+        type: date
+        required: false
+
+      - name: status
+        label: Status
+        type: select
+        options:
+          - draft
+          - upcoming
+          - concluded
+          - cancelled
+          - postponed
+        default: upcoming
+
       - name: time
         label: Time
         type: string
@@ -66,6 +82,58 @@ content:
         label: Contact Person
         type: string
         required: false
+
+      - name: registrationUrl
+        label: Registration / RSVP Link
+        type: string
+        required: false
+
+      - name: coverImage
+        label: Cover Image
+        type: image
+        required: false
+
+      - name: coverImageAlt
+        label: Cover Image Alt Text
+        type: string
+        required: false
+
+      - name: recapSummary
+        label: Recap Summary
+        type: text
+        required: false
+
+      - name: gallery
+        label: Gallery
+        type: object
+        list: true
+        required: false
+        fields:
+          - name: src
+            label: Image
+            type: image
+          - name: alt
+            label: Image Alt Text
+            type: string
+
+      - name: outcomes
+        label: Outcomes
+        type: string
+        list: true
+        required: false
+
+      - name: relatedLinks
+        label: Related Links
+        type: object
+        list: true
+        required: false
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: url
+            label: URL
+            type: string
 
       - name: body
         label: Body

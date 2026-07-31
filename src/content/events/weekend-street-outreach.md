@@ -1,6 +1,7 @@
 ---
 title: 🎬 3-Minute Movie Challenge 🎬
 date: 2026-03-22
+status: concluded
 time: 5:00 PM - 9:00 PM
 location: Linear Garden, Pimple Saudagar
 mapLink: https://maps.app.goo.gl/DommFUkjZrSqAc5z5
