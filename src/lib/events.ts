@@ -20,12 +20,28 @@ export function isPublicEvent(event: EventEntry) {
   return event.data.status !== 'draft';
 }
 
+function hasPassed(event: EventEntry) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const eventDate = new Date(event.data.endDate ?? event.data.date);
+  eventDate.setHours(0, 0, 0, 0);
+  return eventDate < today;
+}
+
 export function isUpcomingEvent(event: EventEntry) {
-  return event.data.status === 'upcoming' || event.data.status === 'postponed';
+  return (event.data.status === 'upcoming' || event.data.status === 'postponed') && !hasPassed(event);
 }
 
 export function isPastEvent(event: EventEntry) {
-  return event.data.status === 'concluded' || event.data.status === 'cancelled';
+  return event.data.status === 'concluded' || event.data.status === 'cancelled' ||
+    ((event.data.status === 'upcoming' || event.data.status === 'postponed') && hasPassed(event));
+}
+
+export function effectiveEventStatus(event: EventEntry): EventStatus {
+  if (event.data.status === 'upcoming' && hasPassed(event)) {
+    return 'concluded';
+  }
+  return event.data.status;
 }
 
 export function sortByDateAscending(a: EventEntry, b: EventEntry) {
