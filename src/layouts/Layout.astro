@@ -9,6 +9,8 @@ interface Props {
   image?: string;
   type?: string;
   canonical?: string;
+  robots?: string;
+  bodyClass?: string;
 }
 
 const {
@@ -17,6 +19,8 @@ const {
   image = '/images/og-default.jpg',
   type = 'website',
   canonical = Astro.url.pathname,
+  robots = 'index, follow',
+  bodyClass = '',
 } = Astro.props;
 
 const siteUrl = 'https://puneanimalliberation.com';
@@ -59,8 +63,8 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
     <meta name="twitter:image:alt" content={title} />
     
     <!-- Additional SEO -->
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
+    <meta name="robots" content={robots} />
+    <meta name="googlebot" content={robots} />
     <meta name="author" content="Pune Animal Liberation" />
     <meta name="keywords" content="animal rights, veganism, animal liberation, Pune, India, activism, animal welfare" />
     
@@ -73,7 +77,7 @@ const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
       data-website-id="338cb98a-f616-4b20-b1e3-52070be1aab9"
     ></script>
   </head>
-  <body>
+  <body class={bodyClass}>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <Nav />
     <main id="main-content">

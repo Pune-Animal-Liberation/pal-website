@@ -6,7 +6,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://puneanimalliberation.com',
   base: '/',
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    filter: (page) => !page.endsWith('/videos/') && !page.endsWith('/videos'),
+  })],
   build: {
     assets: 'assets',
     format: 'directory',
