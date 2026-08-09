@@ -1,0 +1,144 @@
+/* ===== Vegan Starter Kit ===== */
+.starter-kit-page {
+  --starter-ink: #1a1f16;
+  --starter-yellow: #ebb549;
+  --starter-cream: #fbf8f1;
+  --starter-green: #e9efe1;
+}
+
+.starter-kit-page .starter-hero {
+  background: var(--starter-ink);
+  color: #fff;
+  padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 7vw, 5rem);
+  border-bottom: 6px solid var(--starter-yellow);
+}
+
+.starter-hero__inner { max-width: 980px; }
+.starter-eyebrow, .starter-kicker {
+  margin: 0 0 0.85rem;
+  color: var(--starter-yellow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+.starter-hero h1 {
+  max-width: 680px;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: clamp(2.5rem, 8vw, 5.25rem);
+  font-weight: 300;
+  letter-spacing: -2px;
+  line-height: 0.98;
+}
+.starter-hero__intro { max-width: 630px; color: #d9dfd6; font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.55; }
+.starter-paths { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.2rem; }
+.starter-path {
+  display: flex;
+  min-height: 238px;
+  padding: 1.35rem;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  background: #fff;
+  color: var(--starter-ink);
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition), border-color var(--transition);
+}
+.starter-path:hover, .starter-path:focus-visible { transform: translateY(-4px); border-color: var(--starter-yellow); outline: none; }
+.starter-path--selected { background: var(--starter-yellow); border-color: var(--starter-yellow); }
+.starter-path__number { color: #777c72; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; }
+.starter-path__title { margin-top: auto; margin-bottom: 0.65rem; font-size: clamp(1.35rem, 3vw, 1.9rem); font-weight: 700; line-height: 1.05; }
+.starter-path__description { max-width: 290px; font-size: 0.95rem; line-height: 1.45; }
+.starter-path__action { margin-top: 1rem; color: #73531b; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+.starter-selection { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; padding: 1rem 1.2rem; background: #2b3424; border-left: 4px solid var(--starter-yellow); }
+.starter-selection__label { margin: 0; color: #aeb9a7; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.starter-selection__value { margin: 0; font-weight: 700; }
+.starter-selection__jump { margin-left: auto; color: var(--starter-yellow); font-size: 0.85rem; font-weight: 700; text-decoration: none; }
+
+.starter-section { padding: clamp(3.25rem, 7vw, 6rem) 0; }
+.starter-section--plan { background: var(--starter-green); }
+.starter-section--light { background: var(--starter-cream); }
+.starter-section--faq { background: #f0f2ec; }
+.starter-section__heading { max-width: 650px; margin-bottom: 2rem; }
+.starter-section__heading h2, .starter-two-column h2, .starter-help h2, .starter-bottom-cta h2 { margin-bottom: 0.75rem; color: var(--starter-ink); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; letter-spacing: -1px; line-height: 1; }
+.starter-section__heading > p:last-child { margin-bottom: 0; color: #5f675b; font-size: 1.05rem; line-height: 1.55; }
+.starter-plan-empty { max-width: 500px; margin: 0; padding: 1.1rem 1.25rem; background: #fff; color: #5c6458; border-left: 4px solid var(--starter-yellow); }
+.week-plan { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.week-plan__step { padding: 1.4rem; background: #fff; border-top: 4px solid var(--starter-yellow); }
+.week-plan__day { color: #69725f; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.week-plan h3, .food-card h3, .nutrition-card h3 { margin: 1rem 0 0.55rem; font-size: 1.25rem; font-weight: 700; line-height: 1.15; }
+.week-plan p, .food-card p, .nutrition-card p { margin-bottom: 0; color: #5c6458; font-size: 0.95rem; line-height: 1.55; }
+.easy-change-panel { padding: 1.4rem; background: #fff; border-left: 4px solid var(--starter-yellow); }
+.easy-change-panel__prompt { margin-bottom: 1rem; font-weight: 700; }
+.swap-choices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.65rem; }
+.swap-choice { min-height: 112px; padding: 0.85rem; background: var(--starter-cream); color: var(--starter-ink); border: 1px solid #d6ddce; text-align: left; cursor: pointer; }
+.swap-choice:hover, .swap-choice:focus-visible, .swap-choice--selected { background: var(--starter-yellow); border-color: var(--starter-yellow); outline: none; }
+.swap-choice strong, .swap-choice span { display: block; }
+.swap-choice strong { margin-bottom: 0.35rem; font-size: 0.9rem; line-height: 1.2; }
+.swap-choice span { color: #687064; font-size: 0.78rem; line-height: 1.35; }
+.swap-choice--selected span, .swap-choice:hover span, .swap-choice:focus-visible span { color: #55451f; }
+.swap-choice__note { margin: 1rem 0 0; color: #5c6458; font-size: 0.9rem; }
+
+.food-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.food-card { padding: 1.25rem; background: #fff; border: 1px solid #e0e3dc; }
+.food-card__icon { font-size: 2rem; line-height: 1; }
+.food-card h3 { margin-top: 1rem; }
+.food-card__tip { margin-top: 1rem !important; padding-top: 0.8rem; border-top: 1px solid #e2e5df; color: #6f5a23 !important; font-size: 0.82rem !important; }
+.swap-table-wrap { margin-top: 2.5rem; }
+.swap-table__title { margin-bottom: 0.8rem; font-size: 1.15rem; }
+.swap-table { border-top: 2px solid var(--starter-ink); }
+.swap-table__row { display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid #dfe3da; font-size: 0.9rem; }
+.swap-table__row span:first-child { font-weight: 700; }
+.swap-table__row--head { color: #65705f; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+.nutrition-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.nutrition-card { padding: 1.25rem; background: var(--starter-cream); border: 1px solid #e2e5df; }
+.nutrition-card__number { color: var(--starter-yellow); font-size: 1.4rem; font-weight: 700; }
+.starter-note { margin: 1.4rem 0 0; color: #687064; font-size: 0.8rem; line-height: 1.5; }
+.starter-two-column { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(2rem, 7vw, 6rem); }
+.starter-two-column > div > p:not(.starter-kicker), .starter-help p { color: #5c6458; line-height: 1.6; }
+.order-box { margin-top: 1.5rem; padding: 1.2rem; background: var(--starter-green); border-left: 4px solid var(--starter-yellow); }
+.order-box p { margin-bottom: 0; color: var(--starter-ink) !important; }
+.order-box__label { margin-bottom: 0.5rem !important; font-weight: 700; }
+.check-list { list-style: none; padding: 0; margin: 0; }
+.check-list li { position: relative; padding: 0 0 1rem 1.5rem; color: #5c6458; line-height: 1.55; }
+.check-list li::before { position: absolute; left: 0; content: '✓'; color: #769258; font-weight: 700; }
+.starter-help { background: var(--starter-ink); color: #fff; padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+.starter-help__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.starter-help h2 { color: #fff; }
+.starter-help p { max-width: 650px; margin-bottom: 0; color: #d9dfd6; }
+.starter-help .starter-kicker { margin-bottom: 0.75rem; }
+.starter-help__button { flex: 0 0 auto; white-space: nowrap; }
+.starter-faq { display: grid; grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.5fr); gap: 3rem; }
+.faq-list details { border-top: 1px solid #ccd3c6; }
+.faq-list details:last-child { border-bottom: 1px solid #ccd3c6; }
+.faq-list summary { padding: 1.1rem 2rem 1.1rem 0; color: var(--starter-ink); font-weight: 700; cursor: pointer; list-style: none; position: relative; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: '+'; position: absolute; right: 0; color: #7b9b58; font-size: 1.3rem; font-weight: 300; }
+.faq-list details[open] summary::after { content: '−'; }
+.faq-list details p { max-width: 600px; margin: -0.25rem 0 1.2rem; padding-right: 1.5rem; color: #5c6458; font-size: 0.95rem; line-height: 1.55; }
+.starter-bottom-cta { padding: clamp(3rem, 7vw, 5.5rem) 0; text-align: center; }
+.starter-bottom-cta .starter-kicker { color: #8b6b26; }
+.starter-bottom-cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
+.starter-bottom-cta__actions .btn--secondary { color: var(--starter-ink); border-color: var(--starter-ink); }
+.starter-bottom-cta__actions .btn--secondary:hover { background: var(--starter-ink); color: #fff; }
+
+@media (max-width: 900px) {
+  .food-grid, .nutrition-grid { grid-template-columns: repeat(2, 1fr); }
+  .swap-choices { grid-template-columns: repeat(2, 1fr); }
+  .starter-faq { grid-template-columns: 1fr; gap: 1rem; }
+}
+@media (max-width: 680px) {
+  .starter-paths, .week-plan, .starter-two-column { grid-template-columns: 1fr; }
+  .starter-path { min-height: 210px; }
+  .starter-selection { align-items: flex-start; flex-wrap: wrap; gap: 0.4rem 0.8rem; }
+  .starter-selection__jump { width: 100%; margin-left: 0; }
+  .starter-help__inner { align-items: flex-start; flex-direction: column; }
+  .starter-help__button { width: 100%; text-align: center; }
+}
+@media (max-width: 480px) {
+  .food-grid, .nutrition-grid, .swap-choices { grid-template-columns: 1fr; }
+  .swap-table__row { grid-template-columns: 0.85fr 1.5fr; font-size: 0.82rem; }
+}

@@ -1,0 +1,350 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const mentorPhone = '918830592115';
+const mentorMessage = encodeURIComponent(
+  'Hi PAL! I found your Vegan Starter Kit and would like help getting started.'
+);
+const mentorHref = `https://wa.me/${mentorPhone}?text=${mentorMessage}`;
+---
+
+<Layout
+  title="Vegan Starter Kit"
+  description="A practical, India-friendly first step for anyone ready to try vegan eating. Choose a 7-day challenge or one easy change, with support from PAL."
+  bodyClass="starter-kit-page"
+>
+  <section class="starter-hero" aria-labelledby="starter-title">
+    <div class="container starter-hero__inner">
+      <p class="starter-eyebrow">Pune Animal Liberation · Vegan Starter Kit</p>
+      <h1 id="starter-title">How would you like to start?</h1>
+      <p class="starter-hero__intro">
+        You do not need a perfect plan. Pick one doable next step and we’ll help you make it work
+        with the food, budget and people already in your life.
+      </p>
+
+      <div class="starter-paths" aria-label="Choose your starting path">
+        <button
+          class="starter-path starter-path--challenge"
+          type="button"
+          data-path-choice="challenge"
+          data-track="vegan_starter_kit_path_selected"
+          data-track-label="7-day-vegan-challenge"
+          aria-controls="path-plan"
+        >
+          <span class="starter-path__number">01</span>
+          <span class="starter-path__title">7-Day Vegan Challenge</span>
+          <span class="starter-path__description">Try being fully vegan for 7 days, one meal at a time.</span>
+          <span class="starter-path__action">Choose this <span aria-hidden="true">→</span></span>
+        </button>
+        <button
+          class="starter-path starter-path--change"
+          type="button"
+          data-path-choice="easy-change"
+          data-track="vegan_starter_kit_path_selected"
+          data-track-label="one-easy-change"
+          aria-controls="path-plan"
+        >
+          <span class="starter-path__number">02</span>
+          <span class="starter-path__title">One Easy Change</span>
+          <span class="starter-path__description">Pick one animal product you regularly consume and replace it for 7 days.</span>
+          <span class="starter-path__action">Choose this <span aria-hidden="true">→</span></span>
+        </button>
+      </div>
+
+      <div class="starter-selection" id="path-plan" hidden aria-live="polite">
+        <p class="starter-selection__label">Your starting point</p>
+        <p class="starter-selection__value" data-selection-label></p>
+        <a class="starter-selection__jump" href="#your-first-week">See your plan ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="starter-section starter-section--plan" id="your-first-week" aria-labelledby="plan-title">
+    <div class="container">
+      <div class="starter-section__heading">
+        <p class="starter-kicker">Your next 7 days</p>
+        <h2 id="plan-title" data-plan-title>Start with one week.</h2>
+        <p data-plan-intro>Small, repeatable choices beat an all-or-nothing plan. Here is a simple place to begin.</p>
+      </div>
+
+      <p class="starter-plan-empty" data-plan-empty>Choose a path above to see your plan.</p>
+
+      <div class="week-plan" data-path-content="challenge" hidden>
+        <article class="week-plan__step">
+          <span class="week-plan__day">Days 1–2</span>
+          <h3>Make breakfast easy</h3>
+          <p>Poha, upma, idli, dosa, paratha or toast. Have chai or coffee with soy, oat or peanut milk.</p>
+        </article>
+        <article class="week-plan__step">
+          <span class="week-plan__day">Days 3–5</span>
+          <h3>Build your plate</h3>
+          <p>Keep your usual rice or roti. Add dal, chana, rajma, soy chunks or tofu plus a vegetable.</p>
+        </article>
+        <article class="week-plan__step">
+          <span class="week-plan__day">Days 6–7</span>
+          <h3>Plan for real life</h3>
+          <p>Save two outside-food options, tell one person your plan, and note what you want to repeat next week.</p>
+        </article>
+      </div>
+
+      <div class="easy-change-panel" data-path-content="easy-change" hidden>
+        <p class="easy-change-panel__prompt">Which change would feel easiest this week?</p>
+        <div class="swap-choices" role="group" aria-label="Choose one easy change">
+          <button type="button" class="swap-choice" data-swap-choice="milk" data-track="vegan_starter_kit_easy_change_selected" data-track-label="milk">
+            <strong>Milk in chai / coffee</strong><span>Try soy, oat, peanut or coconut milk.</span>
+          </button>
+          <button type="button" class="swap-choice" data-swap-choice="dairy" data-track="vegan_starter_kit_easy_change_selected" data-track-label="dairy">
+            <strong>Dairy at breakfast</strong><span>Try peanut butter, chutney or hummus on toast.</span>
+          </button>
+          <button type="button" class="swap-choice" data-swap-choice="egg" data-track="vegan_starter_kit_easy_change_selected" data-track-label="egg">
+            <strong>Eggs</strong><span>Try besan chilla, tofu bhurji or moong dal chilla.</span>
+          </button>
+          <button type="button" class="swap-choice" data-swap-choice="meat" data-track="vegan_starter_kit_easy_change_selected" data-track-label="meat">
+            <strong>Chicken / meat</strong><span>Try chana, rajma, soy chaap, tofu or mock meat.</span>
+          </button>
+        </div>
+        <p class="swap-choice__note" data-swap-note>Select a swap to see your mini-plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="starter-section starter-section--light" aria-labelledby="food-title">
+    <div class="container">
+      <div class="starter-section__heading">
+        <p class="starter-kicker">Keep your food familiar</p>
+        <h2 id="food-title">What can I eat?</h2>
+        <p>Most of your plate can stay the same. Swap the animal part, not your whole cuisine.</p>
+      </div>
+
+      <div class="food-grid">
+        <article class="food-card">
+          <span class="food-card__icon" aria-hidden="true">☕</span>
+          <h3>Milk, tea & coffee</h3>
+          <p>Start with unsweetened soy milk for the closest all-round option. Oat, peanut and coconut milk also work—try a small pack first.</p>
+          <p class="food-card__tip"><strong>Tea tip:</strong> let plant milk warm before adding it to strong tea.</p>
+        </article>
+        <article class="food-card">
+          <span class="food-card__icon" aria-hidden="true">🥣</span>
+          <h3>Breakfast</h3>
+          <p>Poha, idli, dosa with chutney, aloo paratha, besan chilla, misal, oats with banana or bread with peanut butter.</p>
+        </article>
+        <article class="food-card">
+          <span class="food-card__icon" aria-hidden="true">🍛</span>
+          <h3>Lunch & dinner</h3>
+          <p>Dal-rice, rajma-chawal, chole, bhakri-pithla, vegetable pulao, biryani, roti-sabzi, tofu bhurji or soy keema.</p>
+        </article>
+        <article class="food-card">
+          <span class="food-card__icon" aria-hidden="true">🥜</span>
+          <h3>Affordable staples</h3>
+          <p>Dal, chana, rajma, soy chunks, peanuts, roasted chana, rice, atta, potatoes, seasonal vegetables and bananas.</p>
+        </article>
+      </div>
+
+      <div class="swap-table-wrap">
+        <h3 class="swap-table__title">Quick swaps at the shop</h3>
+        <div class="swap-table" role="table" aria-label="Common vegan swaps">
+          <div class="swap-table__row swap-table__row--head" role="row"><span role="columnheader">Instead of</span><span role="columnheader">Try</span></div>
+          <div class="swap-table__row" role="row"><span role="cell">Milk</span><span role="cell">Soy, oat, peanut or coconut milk</span></div>
+          <div class="swap-table__row" role="row"><span role="cell">Curd / raita</span><span role="cell">Unsweetened plant curd, or lemon + cucumber chutney</span></div>
+          <div class="swap-table__row" role="row"><span role="cell">Butter / ghee</span><span role="cell">Peanut butter, coconut oil or any cooking oil</span></div>
+          <div class="swap-table__row" role="row"><span role="cell">Paneer</span><span role="cell">Tofu, soy chunks or mushrooms</span></div>
+          <div class="swap-table__row" role="row"><span role="cell">Eggs</span><span role="cell">Besan chilla or tofu bhurji</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="starter-section" aria-labelledby="nutrition-title">
+    <div class="container">
+      <div class="starter-section__heading">
+        <p class="starter-kicker">Simple nutrition</p>
+        <h2 id="nutrition-title">The four things to remember</h2>
+        <p>You do not need expensive powders or “special” food. Aim for variety and one reliable source of each.</p>
+      </div>
+      <div class="nutrition-grid">
+        <article class="nutrition-card"><span class="nutrition-card__number">01</span><h3>Protein</h3><p>Dal, beans, chana, soy chunks, tofu, peanuts, sprouts and besan. Add one to every main meal.</p></article>
+        <article class="nutrition-card"><span class="nutrition-card__number">02</span><h3>B12</h3><p>Take a reliable B12 supplement or use a fortified food regularly. This is the one nutrient not to “wing.”</p></article>
+        <article class="nutrition-card"><span class="nutrition-card__number">03</span><h3>Calcium</h3><p>Choose fortified plant milk or tofu, and include ragi, sesame, greens, beans or calcium-set tofu.</p></article>
+        <article class="nutrition-card"><span class="nutrition-card__number">04</span><h3>Enough food</h3><p>Eat until satisfied: grains + legumes + vegetables + fruit, with nuts or seeds when useful.</p></article>
+      </div>
+      <p class="starter-note">If you are pregnant, breastfeeding, managing a medical condition or taking medication, ask a qualified health professional for individual advice.</p>
+    </div>
+  </section>
+
+  <section class="starter-section starter-section--light" aria-labelledby="outside-title">
+    <div class="container starter-two-column">
+      <div>
+        <p class="starter-kicker">No kitchen? No problem.</p>
+        <h2 id="outside-title">Eating outside in Pune</h2>
+        <p>Say “vegan” and be specific: no milk, curd, butter, ghee, paneer, cream, egg or meat. Ask what can be cooked in oil.</p>
+        <div class="order-box">
+          <p class="order-box__label">Useful orders</p>
+          <p>Idli + sambar · misal pav (check farsan) · chole / rajma · veg thali (no ghee) · dosa (no butter) · dal fry (no cream) · veg biryani</p>
+        </div>
+      </div>
+      <div>
+        <p class="starter-kicker">When people ask</p>
+        <h2>Family & social situations</h2>
+        <ul class="check-list">
+          <li><strong>Keep it about your choice:</strong> “I’m trying this for 7 days. Can you help me make one meal vegan?”</li>
+          <li><strong>Bring something to share:</strong> samosas, pakoras, hummus, chana chaat or a simple pulao.</li>
+          <li><strong>Prepare one sentence:</strong> you do not need to win every debate to keep your promise to yourself.</li>
+          <li><strong>Ask PAL:</strong> a Vegan Buddy can help you plan for your specific home or workplace.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="starter-help" aria-labelledby="help-title">
+    <div class="container starter-help__inner">
+      <div>
+        <p class="starter-kicker">You don’t have to figure it out alone</p>
+        <h2 id="help-title">Want a personal Vegan Buddy?</h2>
+        <p>PAL volunteers can help with shopping, recipes, family conversations, eating out and getting unstuck. Tell us where you are starting—we’ll meet you there.</p>
+      </div>
+      <a
+        class="btn btn--primary starter-help__button"
+        href={mentorHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-mentor-link
+        data-track="vegan_starter_kit_mentor_request"
+        data-track-label="vegan-buddy"
+      >Get a Vegan Buddy <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="starter-section starter-section--faq" aria-labelledby="faq-title">
+    <div class="container starter-faq">
+      <div class="starter-section__heading">
+        <p class="starter-kicker">Stuck? Start here.</p>
+        <h2 id="faq-title">Quick answers</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>What if I accidentally eat something non-vegan?</summary>
+          <p>Nothing is ruined. Notice what happened, choose your next meal, and continue. A seven-day experiment is for learning, not being perfect.</p>
+        </details>
+        <details>
+          <summary>Will I be hungry all the time?</summary>
+          <p>Usually not if you eat enough. Keep rice, roti, potatoes, dal, beans and snacks in your routine. Add protein to meals rather than only removing foods.</p>
+        </details>
+        <details>
+          <summary>Do I need costly vegan products?</summary>
+          <p>No. Dal, beans, soy chunks, peanuts, grains and seasonal produce are the foundation. Packaged alternatives are optional.</p>
+        </details>
+        <details>
+          <summary>How do I know if a packaged food is vegan?</summary>
+          <p>Check for milk solids, whey, casein, butter, ghee, cream, egg and honey. In India, look for the green vegetarian dot and still read the ingredients—vegetarian does not always mean vegan.</p>
+        </details>
+        <details>
+          <summary>Can I ask a real person?</summary>
+          <p>Yes. Message PAL for a Vegan Buddy or mentor. You can ask one small question; you do not need to commit to anything first.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="starter-bottom-cta" aria-labelledby="bottom-cta-title">
+    <div class="container">
+      <p class="starter-kicker">Ready for your first meal?</p>
+      <h2 id="bottom-cta-title" data-bottom-cta-title>Choose your next small step.</h2>
+      <div class="starter-bottom-cta__actions">
+        <a class="btn btn--primary" href={mentorHref} target="_blank" rel="noopener noreferrer" data-mentor-link data-track="vegan_starter_kit_mentor_request" data-track-label="bottom-vegan-buddy">Ask PAL for Help</a>
+        <a class="btn btn--secondary" href="#your-first-week" data-track="vegan_starter_kit_plan_viewed" data-track-label="bottom-plan">View the 7-day plan</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    type Path = 'challenge' | 'easy-change';
+
+    const track = (eventName: string, properties: Record<string, string> = {}) => {
+      const analytics = (window as Window & { umami?: { track?: (name: string, data?: Record<string, string>) => void } }).umami;
+      analytics?.track?.(eventName, { page: 'vegan-starter-kit', ...properties });
+    };
+
+    const pathLabels: Record<Path, string> = {
+      challenge: '7-Day Vegan Challenge',
+      'easy-change': 'One Easy Change',
+    };
+    const selection = document.querySelector<HTMLElement>('[data-selection-label]');
+    const planTitle = document.querySelector<HTMLElement>('[data-plan-title]');
+    const planIntro = document.querySelector<HTMLElement>('[data-plan-intro]');
+    const bottomCtaTitle = document.querySelector<HTMLElement>('[data-bottom-cta-title]');
+    const planEmpty = document.querySelector<HTMLElement>('[data-plan-empty]');
+    const pathPlan = document.querySelector<HTMLElement>('#path-plan');
+    const mentorLinks = document.querySelectorAll<HTMLAnchorElement>('[data-mentor-link]');
+    const initialMentorMessage = 'Hi PAL! I found your Vegan Starter Kit and would like help getting started.';
+    let selectedPath: Path | null = null;
+    let selectedSwap = '';
+
+    const setMentorLinks = () => {
+      const pathText = selectedPath ? ` I chose: ${pathLabels[selectedPath]}.` : '';
+      const swapText = selectedSwap ? ` I want to try replacing ${selectedSwap}.` : '';
+      const message = encodeURIComponent(`${initialMentorMessage}${pathText}${swapText}`);
+      mentorLinks.forEach((link) => {
+        link.href = `https://wa.me/918830592115?text=${message}`;
+      });
+    };
+
+    const showPath = (path: Path) => {
+      selectedPath = path;
+      pathPlan?.removeAttribute('hidden');
+      if (selection) selection.textContent = pathLabels[path];
+      if (planTitle) planTitle.textContent = path === 'challenge' ? 'Your simple 7-day plan.' : 'Your one-change plan.';
+      if (planIntro) planIntro.textContent = path === 'challenge'
+        ? 'Use the week to learn what works for you. Keep meals familiar and make the next meal your only job.'
+        : 'Choose one replacement below. Keep everything else the same, and notice what makes the change easier.';
+      if (bottomCtaTitle) bottomCtaTitle.textContent = path === 'challenge'
+        ? 'Want someone alongside you this week?'
+        : 'Want help making your one change stick?';
+      planEmpty?.setAttribute('hidden', '');
+      document.querySelectorAll<HTMLElement>('[data-path-content]').forEach((element) => {
+        element.toggleAttribute('hidden', element.dataset.pathContent !== path);
+      });
+      document.querySelectorAll<HTMLButtonElement>('[data-path-choice]').forEach((button) => {
+        const isSelected = button.dataset.pathChoice === path;
+        button.classList.toggle('starter-path--selected', isSelected);
+        button.setAttribute('aria-pressed', String(isSelected));
+      });
+      setMentorLinks();
+      track('vegan_starter_kit_plan_viewed', { path });
+    };
+
+    document.querySelectorAll<HTMLButtonElement>('[data-path-choice]').forEach((button) => {
+      button.addEventListener('click', () => showPath(button.dataset.pathChoice as Path));
+    });
+
+    const swapNotes: Record<string, string> = {
+      milk: 'For 7 days: use plant milk in your first chai or coffee. Keep a backup option like black tea or lemon water.',
+      dairy: 'For 7 days: replace dairy at breakfast with peanut butter, chutney, hummus or a besan chilla.',
+      egg: 'For 7 days: swap eggs for besan chilla, moong dal chilla or tofu bhurji—add fruit or toast if you need more.',
+      meat: 'For 7 days: swap the meat in one meal for chana, rajma, soy chunks, tofu or a bean-based dish.',
+    };
+    const swapLabels: Record<string, string> = { milk: 'milk in chai / coffee', dairy: 'dairy at breakfast', egg: 'eggs', meat: 'chicken / meat' };
+    const swapNote = document.querySelector<HTMLElement>('[data-swap-note]');
+    document.querySelectorAll<HTMLButtonElement>('[data-swap-choice]').forEach((button) => {
+      button.addEventListener('click', () => {
+        selectedSwap = button.dataset.swapChoice || '';
+        if (swapNote) swapNote.textContent = swapNotes[selectedSwap];
+        document.querySelectorAll<HTMLButtonElement>('[data-swap-choice]').forEach((choice) => {
+          choice.classList.toggle('swap-choice--selected', choice === button);
+          choice.setAttribute('aria-pressed', String(choice === button));
+        });
+        setMentorLinks();
+        track('vegan_starter_kit_easy_change_selected', { change: selectedSwap, label: swapLabels[selectedSwap] || selectedSwap });
+      });
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-track]').forEach((element) => {
+      element.addEventListener('click', () => {
+        const eventName = element.dataset.track;
+        if (!eventName || eventName === 'vegan_starter_kit_path_selected' || eventName === 'vegan_starter_kit_easy_change_selected') return;
+        track(eventName, { label: element.dataset.trackLabel || '' });
+      });
+    });
+
+    setMentorLinks();
+  </script>
+</Layout>
