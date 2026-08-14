@@ -29,6 +29,7 @@ const videos = [
             class="video-card__button"
             type="button"
             data-video-id={video.videoId}
+            data-video-key={video.language.toLowerCase()}
             aria-label={`Play ${video.language} video`}
           >
             <span class="video-card__thumbnail">
@@ -45,16 +46,50 @@ const videos = [
       ))}
     </section>
 
+    <section class="offline-controls" aria-labelledby="offline-controls-title">
+      <div class="offline-controls__heading">
+        <h2 id="offline-controls-title">Offline videos</h2>
+        <p>Choose a folder containing <code>english.mp4</code>, <code>hindi.mp4</code>, and <code>marathi.mp4</code> to play from the tablet.</p>
+      </div>
+      <div class="offline-picker">
+        <label class="visually-hidden" for="video-folder-path">Selected videos folder</label>
+        <input
+          id="video-folder-path"
+          class="offline-picker__path"
+          type="text"
+          value="No folder selected"
+          readonly
+          aria-describedby="video-folder-status"
+        />
+        <button class="offline-picker__button" type="button" id="video-folder-browse">Browse</button>
+        <input
+          class="visually-hidden"
+          id="video-folder-input"
+          type="file"
+          webkitdirectory
+          directory
+          multiple
+          accept="video/mp4,.mp4"
+          tabindex="-1"
+        />
+      </div>
+      <p class="offline-controls__status" id="video-folder-status" aria-live="polite">
+        YouTube playback is active. Select a folder to use local files without internet.
+      </p>
+    </section>
+
     <dialog class="video-dialog" aria-labelledby="video-dialog-title">
       <div class="video-dialog__content">
         <h2 id="video-dialog-title" class="visually-hidden">Playing video</h2>
         <button class="video-dialog__close" type="button" aria-label="Close video">×</button>
         <div class="video-dialog__frame-wrap">
           <iframe
+            hidden
             title="Three Minute Movie Challenge video"
             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
             allowfullscreen
           ></iframe>
+          <video hidden controls playsinline preload="metadata"></video>
         </div>
       </div>
     </dialog>
@@ -65,23 +100,92 @@ const videos = [
   const dialog = document.querySelector<HTMLDialogElement>('.video-dialog');
   const dialogContent = dialog?.querySelector<HTMLElement>('.video-dialog__content');
   const iframe = dialog?.querySelector<HTMLIFrameElement>('iframe');
+  const localVideo = dialog?.querySelector<HTMLVideoElement>('video');
   const closeButton = dialog?.querySelector<HTMLButtonElement>('.video-dialog__close');
+  const folderInput = document.querySelector<HTMLInputElement>('#video-folder-input');
+  const folderBrowseButton = document.querySelector<HTMLButtonElement>('#video-folder-browse');
+  const folderPathInput = document.querySelector<HTMLInputElement>('#video-folder-path');
+  const folderStatus = document.querySelector<HTMLElement>('#video-folder-status');
+  const localVideoUrls = new Map<string, string>();
+
+  const videoDefinitions = [
+    { key: 'english', label: 'English' },
+    { key: 'hindi', label: 'Hindi' },
+    { key: 'marathi', label: 'Marathi' },
+  ];
+
+  const updateFolderStatus = (files: File[]) => {
+    if (!folderPathInput || !folderStatus) return;
+
+    if (files.length === 0) {
+      folderPathInput.value = 'No folder selected';
+      folderStatus.textContent = 'YouTube playback is active. Select a folder to use local files without internet.';
+      return;
+    }
+
+    const firstFile = files[0] as File & { webkitRelativePath?: string };
+    const folderName = firstFile.webkitRelativePath?.split('/')[0] || 'Selected folder';
+    const found = videoDefinitions.filter((video) => localVideoUrls.has(video.key));
+    const missing = videoDefinitions.filter((video) => !localVideoUrls.has(video.key));
+
+    folderPathInput.value = folderName;
+    folderStatus.textContent = found.length === videoDefinitions.length
+      ? 'All three offline videos are ready. They will play from this tablet without internet.'
+      : `Found ${found.length} of ${videoDefinitions.length}: ${found.map((video) => video.label).join(', ') || 'none'}. Missing: ${missing.map((video) => `${video.key}.mp4`).join(', ')}. Missing videos will use YouTube.`;
+  };
+
+  folderBrowseButton?.addEventListener('click', () => folderInput?.click());
+  folderInput?.addEventListener('change', () => {
+    localVideoUrls.forEach((url) => URL.revokeObjectURL(url));
+    localVideoUrls.clear();
+
+    const files = Array.from(folderInput.files ?? []);
+    videoDefinitions.forEach((video) => {
+      const matchingFile = files.find((file) => file.name.toLowerCase() === `${video.key}.mp4`);
+      if (matchingFile) localVideoUrls.set(video.key, URL.createObjectURL(matchingFile));
+    });
+
+    updateFolderStatus(files);
+  });
 
   const closeVideo = () => {
-    if (!dialog || !iframe) return;
+    if (!dialog || !iframe || !localVideo) return;
     iframe.src = '';
+    iframe.hidden = true;
+    localVideo.pause();
+    localVideo.removeAttribute('src');
+    localVideo.load();
+    localVideo.hidden = true;
     if (document.fullscreenElement) document.exitFullscreen();
     dialog.close();
   };
 
   document.querySelectorAll<HTMLButtonElement>('[data-video-id]').forEach((button) => {
     button.addEventListener('click', () => {
-      if (!dialog || !dialogContent || !iframe) return;
+      if (!dialog || !dialogContent || !iframe || !localVideo) return;
       const videoId = button.dataset.videoId;
+      const videoKey = button.dataset.videoKey;
       if (!videoId) return;
 
-      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+      const localVideoUrl = videoKey ? localVideoUrls.get(videoKey) : undefined;
+      if (localVideoUrl) {
+        iframe.src = '';
+        iframe.hidden = true;
+        localVideo.src = localVideoUrl;
+        localVideo.hidden = false;
+      } else {
+        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
+        iframe.hidden = false;
+        localVideo.hidden = true;
+      }
+
       dialog.showModal();
+
+      if (localVideoUrl) {
+        localVideo.play().catch(() => {
+          // The user can start playback with the native controls if autoplay is blocked.
+        });
+      }
 
       if (dialogContent.requestFullscreen) {
         dialogContent.requestFullscreen().catch(() => {
@@ -153,6 +257,81 @@ const videos = [
     margin: 1rem 0 0;
     color: #9a9a9a;
     font-size: 1rem;
+  }
+
+  .offline-controls {
+    width: min(100%, 760px);
+    margin: clamp(20rem, 47vh, 30rem) auto 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid #292929;
+    background: #0d0d0d;
+  }
+
+  .offline-controls__heading h2 {
+    margin: 0 0 0.35rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .offline-controls__heading p,
+  .offline-controls__status {
+    margin: 0;
+    color: #9a9a9a;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .offline-controls code {
+    color: #d7b873;
+    font-size: 0.8rem;
+  }
+
+  .offline-picker {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1rem 0 0.65rem;
+  }
+
+  .offline-picker__path {
+    min-width: 0;
+    flex: 1;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #3a3a3a;
+    border-radius: 0;
+    color: #d0d0d0;
+    background: #000;
+    font: inherit;
+    font-size: 0.85rem;
+  }
+
+  .offline-picker__button {
+    flex: 0 0 auto;
+    padding: 0.7rem 1.15rem;
+    border: 1px solid #c8a15a;
+    border-radius: 0;
+    color: #000;
+    background: #c8a15a;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .offline-picker__button:hover,
+  .offline-picker__button:focus-visible {
+    color: #fff;
+    background: #8e713c;
+  }
+
+  .offline-picker__button:focus-visible,
+  .offline-picker__path:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
   }
 
   .video-gallery {
@@ -229,8 +408,7 @@ const videos = [
     transform: translate(-50%, -50%) scale(1.08);
   }
 
-  .video-card__language,
-  .video-card__title {
+  .video-card__language {
     display: block;
   }
 
@@ -247,34 +425,6 @@ const videos = [
     line-height: 1;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
     transform: translateX(-50%);
-  }
-
-  .video-card--coming-soon {
-    opacity: 0.72;
-  }
-
-  .video-card__thumbnail--placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border: 1px solid #292929;
-    background: radial-gradient(circle at 50% 35%, #242424 0, #101010 55%, #050505 100%);
-  }
-
-  .video-card__placeholder-mark {
-    color: #c8a15a;
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-  }
-
-  .video-card__coming-soon-label {
-    margin-top: 0.5rem;
-    color: #8b8b8b;
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
   }
 
   .video-dialog {
@@ -312,6 +462,14 @@ const videos = [
     border: 0;
   }
 
+  .video-dialog video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #000;
+    object-fit: contain;
+  }
+
   .video-dialog__close {
     position: absolute;
     top: 1rem;
@@ -336,6 +494,15 @@ const videos = [
   }
 
   @media (max-width: 760px) {
+    .offline-picker {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .offline-picker__button {
+      width: 100%;
+    }
+
     .video-page__shell {
       justify-content: flex-start;
       padding-top: 3rem;
