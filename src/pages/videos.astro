@@ -6,6 +6,8 @@ const videos = [
   { language: 'English', label: 'English', videoId: 'i_9sLUoEEDw', thumbnail: 'maxresdefault' },
   { language: 'Marathi', label: 'मराठी', videoId: 'IqFYHFQVfmI', thumbnail: 'hqdefault' },
 ];
+
+const kidsVideo = { language: 'Kids', label: 'Kids', videoId: 'gpeTwgbeb54', thumbnail: 'maxresdefault' };
 ---
 
 <Layout
@@ -44,18 +46,24 @@ const videos = [
           </button>
         </article>
       ))}
-      <article class="video-card video-card--local">
+      <article class="video-card video-card--available">
         <button
           class="video-card__button"
           type="button"
+          data-video-id={kidsVideo.videoId}
           data-video-key="kids"
           aria-label="Play Kids video"
-          disabled
         >
           <span class="video-card__thumbnail">
-            <video data-local-thumbnail="kids" muted playsinline preload="metadata"></video>
+            <img
+              data-youtube-thumbnail="kids"
+              src={`https://img.youtube.com/vi/${kidsVideo.videoId}/${kidsVideo.thumbnail}.jpg`}
+              alt="Kids video thumbnail"
+              loading="lazy"
+            />
+            <video hidden data-local-thumbnail="kids" muted playsinline preload="metadata"></video>
             <span class="video-card__play" aria-hidden="true">▶</span>
-            <span class="video-card__language">Kids</span>
+            <span class="video-card__language">{kidsVideo.label}</span>
           </span>
         </button>
       </article>
@@ -125,6 +133,7 @@ const videos = [
   const folderStatus = document.querySelector<HTMLElement>('#video-folder-status');
   const kidsButton = document.querySelector<HTMLButtonElement>('[data-video-key="kids"]');
   const kidsThumbnail = document.querySelector<HTMLVideoElement>('[data-local-thumbnail="kids"]');
+  const kidsPoster = document.querySelector<HTMLImageElement>('[data-youtube-thumbnail="kids"]');
   const localVideoUrls = new Map<string, string>();
   let activeLocalVideoLabel = '';
 
@@ -159,11 +168,12 @@ const videos = [
   folderInput?.addEventListener('change', () => {
     localVideoUrls.forEach((url) => URL.revokeObjectURL(url));
     localVideoUrls.clear();
-    kidsButton?.setAttribute('disabled', '');
     if (kidsThumbnail) {
       kidsThumbnail.removeAttribute('src');
       kidsThumbnail.load();
+      kidsThumbnail.hidden = true;
     }
+    if (kidsPoster) kidsPoster.hidden = false;
 
     const files = Array.from(folderInput.files ?? []);
     videoDefinitions.forEach((video) => {
@@ -176,7 +186,8 @@ const videos = [
     const kidsUrl = localVideoUrls.get('kids');
     if (kidsUrl && kidsThumbnail) {
       kidsThumbnail.src = kidsUrl;
-      kidsButton?.removeAttribute('disabled');
+      kidsThumbnail.hidden = false;
+      if (kidsPoster) kidsPoster.hidden = true;
     }
 
     updateFolderStatus(files);
