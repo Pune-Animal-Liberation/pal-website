@@ -44,12 +44,27 @@ const videos = [
           </button>
         </article>
       ))}
+      <article class="video-card video-card--local">
+        <button
+          class="video-card__button"
+          type="button"
+          data-video-key="kids"
+          aria-label="Play Kids video"
+          disabled
+        >
+          <span class="video-card__thumbnail">
+            <video data-local-thumbnail="kids" muted playsinline preload="metadata"></video>
+            <span class="video-card__play" aria-hidden="true">▶</span>
+            <span class="video-card__language">Kids</span>
+          </span>
+        </button>
+      </article>
     </section>
 
     <section class="offline-controls" aria-labelledby="offline-controls-title">
       <div class="offline-controls__heading">
         <h2 id="offline-controls-title">Offline videos</h2>
-        <p>Choose a folder containing <code>english.mp4</code>, <code>hindi.mp4</code>, and <code>marathi.mp4</code> to play from the tablet.</p>
+        <p>Choose a folder containing <code>english.mp4</code>, <code>hindi.mp4</code>, <code>marathi.mp4</code>, and <code>kids.mp4</code> to play from the tablet.</p>
       </div>
       <div class="offline-picker">
         <label class="visually-hidden" for="video-folder-path">Selected videos folder</label>
@@ -106,12 +121,15 @@ const videos = [
   const folderBrowseButton = document.querySelector<HTMLButtonElement>('#video-folder-browse');
   const folderPathInput = document.querySelector<HTMLInputElement>('#video-folder-path');
   const folderStatus = document.querySelector<HTMLElement>('#video-folder-status');
+  const kidsButton = document.querySelector<HTMLButtonElement>('[data-video-key="kids"]');
+  const kidsThumbnail = document.querySelector<HTMLVideoElement>('[data-local-thumbnail="kids"]');
   const localVideoUrls = new Map<string, string>();
 
   const videoDefinitions = [
     { key: 'english', label: 'English' },
     { key: 'hindi', label: 'Hindi' },
     { key: 'marathi', label: 'Marathi' },
+    { key: 'kids', label: 'Kids' },
   ];
 
   const updateFolderStatus = (files: File[]) => {
@@ -130,7 +148,7 @@ const videos = [
 
     folderPathInput.value = folderName;
     folderStatus.textContent = found.length === videoDefinitions.length
-      ? 'All three offline videos are ready. They will play from this tablet without internet.'
+      ? 'All four offline videos are ready. They will play from this tablet without internet.'
       : `Found ${found.length} of ${videoDefinitions.length}: ${found.map((video) => video.label).join(', ') || 'none'}. Missing: ${missing.map((video) => `${video.key}.mp4`).join(', ')}. Missing videos will use YouTube.`;
   };
 
@@ -138,12 +156,25 @@ const videos = [
   folderInput?.addEventListener('change', () => {
     localVideoUrls.forEach((url) => URL.revokeObjectURL(url));
     localVideoUrls.clear();
+    kidsButton?.setAttribute('disabled', '');
+    if (kidsThumbnail) {
+      kidsThumbnail.removeAttribute('src');
+      kidsThumbnail.load();
+    }
 
     const files = Array.from(folderInput.files ?? []);
     videoDefinitions.forEach((video) => {
-      const matchingFile = files.find((file) => file.name.toLowerCase() === `${video.key}.mp4`);
+      const mp4Files = files.filter((file) => file.name.toLowerCase().endsWith('.mp4'));
+      const matchingFile = mp4Files.find((file) => file.name.toLowerCase() === `${video.key}.mp4`)
+        ?? mp4Files.find((file) => file.name.toLowerCase().includes(video.key));
       if (matchingFile) localVideoUrls.set(video.key, URL.createObjectURL(matchingFile));
     });
+
+    const kidsUrl = localVideoUrls.get('kids');
+    if (kidsUrl && kidsThumbnail) {
+      kidsThumbnail.src = kidsUrl;
+      kidsButton?.removeAttribute('disabled');
+    }
 
     updateFolderStatus(files);
   });
@@ -160,23 +191,23 @@ const videos = [
     dialog.close();
   };
 
-  document.querySelectorAll<HTMLButtonElement>('[data-video-id]').forEach((button) => {
+  document.querySelectorAll<HTMLButtonElement>('[data-video-key]').forEach((button) => {
     button.addEventListener('click', () => {
       if (!dialog || !dialogContent || !iframe || !localVideo) return;
       const videoId = button.dataset.videoId;
       const videoKey = button.dataset.videoKey;
-      if (!videoId) return;
-
       const localVideoUrl = videoKey ? localVideoUrls.get(videoKey) : undefined;
       if (localVideoUrl) {
         iframe.src = '';
         iframe.hidden = true;
         localVideo.src = localVideoUrl;
         localVideo.hidden = false;
-      } else {
+      } else if (videoId) {
         iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
         iframe.hidden = false;
         localVideo.hidden = true;
+      } else {
+        return;
       }
 
       dialog.showModal();
@@ -338,7 +369,7 @@ const videos = [
     width: min(100%, 1100px);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(1rem, 3vw, 2rem);
   }
 
@@ -365,15 +396,23 @@ const videos = [
     background: #151515;
   }
 
-  .video-card__thumbnail img {
+  .video-card__thumbnail img,
+  .video-card__thumbnail > video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 300ms ease, opacity 300ms ease;
   }
 
-  .video-card__button:hover .video-card__thumbnail img,
-  .video-card__button:focus-visible .video-card__thumbnail img {
+  .video-card__button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+
+  .video-card__button:not(:disabled):hover .video-card__thumbnail img,
+  .video-card__button:not(:disabled):hover .video-card__thumbnail > video,
+  .video-card__button:focus-visible .video-card__thumbnail img,
+  .video-card__button:focus-visible .video-card__thumbnail > video {
     transform: scale(1.04);
     opacity: 0.72;
   }
@@ -401,7 +440,7 @@ const videos = [
     transition: background 200ms ease, transform 200ms ease;
   }
 
-  .video-card__button:hover .video-card__play,
+  .video-card__button:not(:disabled):hover .video-card__play,
   .video-card__button:focus-visible .video-card__play {
     background: #c8a15a;
     color: #000;
