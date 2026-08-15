@@ -64,7 +64,7 @@ const videos = [
     <section class="offline-controls" aria-labelledby="offline-controls-title">
       <div class="offline-controls__heading">
         <h2 id="offline-controls-title">Offline videos</h2>
-        <p>Choose a folder containing <code>english.mp4</code>, <code>hindi.mp4</code>, <code>marathi.mp4</code>, and <code>kids.mp4</code> to play from the tablet.</p>
+        <p>Choose a folder containing <code>english.mp4</code>, <code>hindi.mp4</code>, <code>marathi.mp4</code>, and <code>kids.mp4</code>. If your Android browser cannot select folders, use Browse to select the MP4 files individually.</p>
       </div>
       <div class="offline-picker">
         <label class="visually-hidden" for="video-folder-path">Selected videos folder</label>
@@ -104,8 +104,9 @@ const videos = [
             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
             allowfullscreen
           ></iframe>
-          <video hidden controls playsinline preload="metadata"></video>
+          <video hidden controls playsinline webkit-playsinline preload="metadata"></video>
         </div>
+        <p class="video-dialog__error" role="alert" hidden></p>
       </div>
     </dialog>
   </div>
@@ -116,6 +117,7 @@ const videos = [
   const dialogContent = dialog?.querySelector<HTMLElement>('.video-dialog__content');
   const iframe = dialog?.querySelector<HTMLIFrameElement>('iframe');
   const localVideo = dialog?.querySelector<HTMLVideoElement>('video');
+  const dialogError = dialog?.querySelector<HTMLElement>('.video-dialog__error');
   const closeButton = dialog?.querySelector<HTMLButtonElement>('.video-dialog__close');
   const folderInput = document.querySelector<HTMLInputElement>('#video-folder-input');
   const folderBrowseButton = document.querySelector<HTMLButtonElement>('#video-folder-browse');
@@ -124,6 +126,7 @@ const videos = [
   const kidsButton = document.querySelector<HTMLButtonElement>('[data-video-key="kids"]');
   const kidsThumbnail = document.querySelector<HTMLVideoElement>('[data-local-thumbnail="kids"]');
   const localVideoUrls = new Map<string, string>();
+  let activeLocalVideoLabel = '';
 
   const videoDefinitions = [
     { key: 'english', label: 'English' },
@@ -179,6 +182,16 @@ const videos = [
     updateFolderStatus(files);
   });
 
+  localVideo?.addEventListener('error', () => {
+    if (!activeLocalVideoLabel) return;
+    const message = `The local ${activeLocalVideoLabel} video could not be decoded on this device. Re-export it as MP4 with H.264/AVC video and AAC audio, then select the folder again.`;
+    if (folderStatus) folderStatus.textContent = message;
+    if (dialogError) {
+      dialogError.textContent = message;
+      dialogError.hidden = false;
+    }
+  });
+
   const closeVideo = () => {
     if (!dialog || !iframe || !localVideo) return;
     iframe.src = '';
@@ -187,6 +200,10 @@ const videos = [
     localVideo.removeAttribute('src');
     localVideo.load();
     localVideo.hidden = true;
+    if (dialogError) {
+      dialogError.textContent = '';
+      dialogError.hidden = true;
+    }
     if (document.fullscreenElement) document.exitFullscreen();
     dialog.close();
   };
@@ -198,11 +215,21 @@ const videos = [
       const videoKey = button.dataset.videoKey;
       const localVideoUrl = videoKey ? localVideoUrls.get(videoKey) : undefined;
       if (localVideoUrl) {
+        activeLocalVideoLabel = videoKey || 'selected';
+        if (dialogError) {
+          dialogError.textContent = '';
+          dialogError.hidden = true;
+        }
         iframe.src = '';
         iframe.hidden = true;
         localVideo.src = localVideoUrl;
         localVideo.hidden = false;
       } else if (videoId) {
+        activeLocalVideoLabel = '';
+        if (dialogError) {
+          dialogError.textContent = '';
+          dialogError.hidden = true;
+        }
         iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`;
         iframe.hidden = false;
         localVideo.hidden = true;
@@ -213,13 +240,15 @@ const videos = [
       dialog.showModal();
 
       if (localVideoUrl) {
+        localVideo.load();
         localVideo.play().catch(() => {
           // The user can start playback with the native controls if autoplay is blocked.
         });
       }
 
-      if (dialogContent.requestFullscreen) {
-        dialogContent.requestFullscreen().catch(() => {
+      const fullscreenTarget = localVideoUrl ? localVideo : dialogContent;
+      if (fullscreenTarget.requestFullscreen) {
+        fullscreenTarget.requestFullscreen().catch(() => {
           // Fullscreen is not available in every browser or embedded context.
         });
       }
@@ -507,6 +536,22 @@ const videos = [
     border: 0;
     background: #000;
     object-fit: contain;
+  }
+
+  .video-dialog__error {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    background: rgba(95, 20, 20, 0.92);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    text-align: center;
   }
 
   .video-dialog__close {
