@@ -8,8 +8,6 @@ mapLink: https://maps.app.goo.gl/mdDQHyHkQ49qHXr5A?g_st=ac
 contactPerson: Pravin 8698961122
 coverImage: /images/IMG_20260826_100129.jpg
 ---
-![August Meetup photos](/images/IMG_20260826_100129.jpg)
-
 Join us for our monthly meetup to meet Pune's vegan family and animal rights activists.
 
 - Socialize
