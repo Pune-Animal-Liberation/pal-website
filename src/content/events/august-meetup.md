@@ -4,7 +4,7 @@ date: 2026-08-30
 endDate: 2026-08-30
 time: 11 AM to 3 PM
 location: Countryside Kitchen
-mapLink: https://maps.app.goo.gl/8ihYErFs7e9zfMb8
+mapLink: https://maps.app.goo.gl/mdDQHyHkQ49qHXr5A?g_st=ac
 contactPerson: Pravin 8698961122
 coverImage: /images/IMG_20260826_100129.jpg
 ---
