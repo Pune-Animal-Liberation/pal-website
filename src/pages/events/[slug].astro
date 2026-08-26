@@ -45,6 +45,14 @@ const hasRecapFields = Boolean(event.data.recapSummary || event.data.gallery.len
   </div>
 
   <div class="post">
+    {event.data.coverImage && (
+      <img
+        class="post__cover"
+        src={event.data.coverImage}
+        alt={event.data.coverImageAlt ?? event.data.title}
+        loading="eager"
+      />
+    )}
     <p class={`event-status event-status--${event.data.status}`}>{statusLabels[event.data.status]}</p>
     {isUpcoming ? (
       <p class="event-intro">Join us for this upcoming event. Please check the logistics below before attending.</p>
