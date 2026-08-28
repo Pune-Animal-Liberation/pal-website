@@ -6,6 +6,8 @@ status: upcoming
 time: 10:00 AM onwards
 location: FC Road / JM Road, Pune
 contactPerson: Pravin 8698961122
+coverImage: /images/shravan-banner.jpg
+coverImageAlt: "PAL Shravan outreach banner reading 'श्रावणात मांसाहार?' with an illustration of a shocked woman"
 ---
 Join us on FC/JM Road for PAL's Shravan outreach — a public street campaign to spark a conversation about compassion this Shravan.
 
