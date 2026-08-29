@@ -4,7 +4,7 @@ date: 2026-08-29
 endDate: 2026-08-29
 status: upcoming
 time: 11:00 AM – 7:00 PM
-location: FC Road / JM Road, Pune
+location: FC Road, outside FC main gate, Pune
 contactPerson: Pravin 8698961122
 coverImage: /images/shravan-banner.jpg
 coverImageAlt: "PAL Shravan outreach banner reading 'श्रावणात मांसाहार?' with an illustration of a shocked woman"
