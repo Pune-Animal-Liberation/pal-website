@@ -7,6 +7,7 @@ location: Countryside Kitchen
 mapLink: https://maps.app.goo.gl/mdDQHyHkQ49qHXr5A?g_st=ac
 contactPerson: Pravin 8698961122
 coverImage: /images/IMG_20260826_100129.jpg
+status: concluded
 ---
 Join us for our monthly meetup to meet Pune's vegan family and animal rights activists.
 

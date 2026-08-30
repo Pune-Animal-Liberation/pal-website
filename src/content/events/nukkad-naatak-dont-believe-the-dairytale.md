@@ -2,7 +2,7 @@
 title: Nukkad Naatak — Don't Believe the Dairytale
 date: 2026-08-30
 endDate: 2026-08-30
-status: upcoming
+status: concluded
 time: 3:45 PM onwards
 location: F.C. Road, Pune
 contactPerson: "Pravin: 8698961122"
