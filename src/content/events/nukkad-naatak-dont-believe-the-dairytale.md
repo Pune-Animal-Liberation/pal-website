@@ -16,6 +16,15 @@ relatedLinks:
     url: https://vishalsamachar.com/?p=96515
   - label: Sanvidhan coverage
     url: https://sanvidhan.in/2026/08/30/पथनाट्याच्या-माध्यमातून/
+coverImage: /images/nukkad-naatak/pune-satta-clipping.jpg
+coverImageAlt: "Pune Satta newspaper coverage of PAL's 'Don't Believe the Dairytale' street play outside Fergusson College"
+gallery:
+  - src: /images/nukkad-naatak/pune-satta-clipping.jpg
+    alt: "Pune Satta newspaper report with photos of the street play outside Fergusson College"
+  - src: /images/nukkad-naatak/dainik-bandhuta-clipping.jpg
+    alt: "Dainik Bandhuta newspaper report with a photo of the street play performance"
+  - src: /images/nukkad-naatak/youth-shine-clipping.jpg
+    alt: "Newspaper report on youth activists shedding light on the dairy industry via the street play"
 ---
 
 PAL's street play (nukkad naatak) hits F.C. Road — *"Don't Believe the Dairytale"* 🐄
