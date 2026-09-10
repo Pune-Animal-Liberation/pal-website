@@ -12,4 +12,6 @@ Sunday evening at Damodar Wagaskar Garden, Karve Nagar: the **3-Minute Movie Cha
 📅 Sunday, 13th September, 6:00–9:00 PM
 📍 Damodar Wagaskar Garden, KP
 
+Confirmed volunteers: Pravin, Omkar.
+
 Add your name to the signup list in the activists group to join.

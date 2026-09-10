@@ -12,4 +12,6 @@ Start the weekend early! Join us at ARAI Hills for the **3-Minute Movie Challeng
 📅 Saturday, 12th September, 6:30–10:00 AM
 📍 ARAI Hills, Pune
 
+Confirmed volunteers: Pravin Giri, Prajakta, Pravin Chaudhary, Sambhav, Sudhish, Aniket R, Umesh.
+
 Add your name to the signup list in the activists group to join.
