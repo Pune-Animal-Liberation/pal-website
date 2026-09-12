@@ -12,6 +12,6 @@ Saturday evening on FC Road: chalk art activism and street outreach outside West
 📅 Saturday, 12th September, 6:00–9:00 PM
 📍 Outside Westside, FC Road
 
-Confirmed volunteers: Pravin, Aniket R, OP, Prajakta, Kartikay Singh, Janhavi Botalaji, Sheba.
+Confirmed volunteers: Pravin, Aniket R, OP, Prajakta, Kartikay Singh, Janhavi Botalaji, Sheba, Twinkle.
 
 Add your name to the signup list in the activists group to join.
