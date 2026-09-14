@@ -2,14 +2,20 @@
 title: Satyagraha March for Animal Liberation
 date: 2026-10-02
 status: upcoming
-location: Across Pune (route to be announced)
+time: 9:00 AM - 6:00 PM
+location: Gandhi Bhavan to Aga Khan Palace (tentative route)
 ---
 
 On Gandhi Jayanti (2 October 2026), Pune Animal Liberation is organizing a
-city-wide Satyagraha March for Animal Liberation across Pune.
+city-wide **Satyagraha March for Animal Liberation** across Pune.
 
-A Core Organizing Committee is being formed to coordinate the march across
-five verticals: route planning & permissions, outreach & mobilization,
-media & PR, art/props & materials, and on-ground coordination & safety.
+📅 Wednesday, 2 October 2026, 9:00 AM – 6:00 PM
+📍 Tentative route: Gandhi Bhavan → Aga Khan Palace (final route pending police permissions)
 
-Exact route, timings and other details will be announced here once finalized.
+A Core Organizing Committee is coordinating the march across teams covering
+route planning & police permissions, outreach & mobilization (individual
+invitations and a city-wide contacts masterlist), creative actions (event
+poster, banners, leaflets, costumes), and digital media & content.
+
+Poster and promotions are in progress — follow this page and PAL's social
+media for the confirmed route and final details.
