@@ -2,7 +2,7 @@
 title: Shravan Outreach — Mock-Meat Tasting 🍛
 date: 2026-08-29
 endDate: 2026-08-29
-status: upcoming
+status: concluded
 time: 11:00 AM – 7:00 PM
 location: FC Road, outside FC main gate, Pune
 contactPerson: Pravin 8698961122
