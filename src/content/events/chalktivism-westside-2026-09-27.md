@@ -13,4 +13,4 @@ PAL's **Street Outreach & Chalktivism**: chalk art activism and one-on-one conve
 🗓 Sunday, 27 Sept, 6:00 PM – 9:30 PM
 📍 Westside, FC Road
 
-Confirmed so far: Pravin, Prajakta.
+Confirmed so far: Pravin, Prajakta, Janhavi.
