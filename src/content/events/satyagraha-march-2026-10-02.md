@@ -11,17 +11,23 @@ On Gandhi Jayanti (2 October 2026), Pune Animal Liberation is organizing a
 city-wide **Satyagraha March for Animal Liberation** across Pune.
 
 📅 Friday, 2 October 2026, 9:00 AM – 5:00 PM
-📍 Route: Gandhi Bhavan (Kothrud) → Aga Khan Palace (Yerawada)
+📍 Route: Gandhi Bhavan (Kothrud) → Karve Road → Deccan Gymkhana → FC Road →
+Shivajinagar → Pune Station → Yerawada → Aga Khan Palace (~14.5 km)
 ⚪ Dress code: white
 
 The march is not a continuous walk — it moves in stages with a good number of
 halts, so joining for a couple of hours is fine. Highlights include public
-speeches, chalk art, and street outreach conversations.
+speeches, chalk art, and street outreach conversations. Around 70–80 citizens
+will walk peacefully, single-file along the footpath, without obstructing
+traffic.
+
+On the day, PAL will also submit its memorandum of demands to the District
+Collector at the Collector Office.
 
 Join the official participant group for live route updates and coordination:
 https://chat.whatsapp.com/KAKlzaef7nZ5CCC4zCvPwa
 
-**Planned stops** (route still subject to final police permission):
+**Planned stops** (final route confirmed above):
 
 1. Gandhi Bhavan — start
 2. Karve Putla
