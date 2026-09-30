@@ -15,6 +15,10 @@ city-wide **Satyagraha March for Animal Liberation** across Pune.
 Shivajinagar → Pune Station → Yerawada → Aga Khan Palace (~14.5 km)
 ⚪ Dress code: white
 
+A joint speech point has been agreed with Gandhi Bhavan's own Gandhi Jayanti
+march (Deccan → Gandhi Bhavan, 9 AM–12 PM): the two marches will meet at a
+shared point where PAL will deliver a speech.
+
 The march is not a continuous walk — it moves in stages with a good number of
 halts, so joining for a couple of hours is fine. Highlights include public
 speeches, chalk art, and street outreach conversations. Around 70–80 citizens
