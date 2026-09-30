@@ -44,7 +44,7 @@ https://chat.whatsapp.com/KAKlzaef7nZ5CCC4zCvPwa
 9. Balgandharva
 10. MaNaPa (Pune Municipal Corporation)
 11. Collector Office — memorandum of demands submitted
-12. Bapu Bhavan — 45-minute lunch halt
+12. Bapu Bhavan — 30-minute lunch halt (tofu wraps from caterer; Bapu Bhavan canteen also available on self-pay)
 13. Bund Garden
 14. Aga Khan Palace — finish, 4:30 PM
 
