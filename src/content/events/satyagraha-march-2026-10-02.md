@@ -19,11 +19,15 @@ A joint speech point has been agreed with Gandhi Bhavan's own Gandhi Jayanti
 march (Deccan → Gandhi Bhavan, 9 AM–12 PM): the two marches will meet at a
 shared point where PAL will deliver a speech.
 
-The march is not a continuous walk — it moves in stages with a good number of
-halts, so joining for a couple of hours is fine. Highlights include public
-speeches, chalk art, and street outreach conversations. Around 85 citizens
-are expected to walk peacefully, single-file along the footpath, without obstructing
-traffic.
+The march is not a continuous walk — it moves in stages with a good number of halts, so joining for a couple of
+hours is fine. Highlights include public
+speeches, chalk art, and street outreach conversations. Close to 100 citizens
+have signed up so far, and the count is still growing. Participants will walk
+peacefully, single-file along the footpath, without obstructing traffic.
+
+The route runs parallel to the Pune Metro network — if you can't walk the full
+distance, you can join midway at any stop, take breaks, or hop on the metro for
+a stretch.
 
 On the day, PAL will also submit its memorandum of demands to the District
 Collector at the Collector Office.
