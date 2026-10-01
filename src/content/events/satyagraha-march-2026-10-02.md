@@ -21,8 +21,8 @@ shared point where PAL will deliver a speech.
 
 The march is not a continuous walk — it moves in stages with a good number of
 halts, so joining for a couple of hours is fine. Highlights include public
-speeches, chalk art, and street outreach conversations. Around 70–80 citizens
-will walk peacefully, single-file along the footpath, without obstructing
+speeches, chalk art, and street outreach conversations. Around 85 citizens
+are expected to walk peacefully, single-file along the footpath, without obstructing
 traffic.
 
 On the day, PAL will also submit its memorandum of demands to the District
