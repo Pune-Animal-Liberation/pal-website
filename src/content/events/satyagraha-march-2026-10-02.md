@@ -2,7 +2,7 @@
 title: Satyagraha March for Animal Liberation
 date: 2026-10-02
 status: upcoming
-time: 8:30 AM – 4:30 PM
+time: 9:00 AM – 5:00 PM
 location: Gandhi Bhavan (Kothrud) → Aga Khan Palace (Yerawada), Pune
 coverImage: /images/satyagraha-march-2026-10-02-poster.jpg
 ---
@@ -10,7 +10,7 @@ coverImage: /images/satyagraha-march-2026-10-02-poster.jpg
 On Gandhi Jayanti (2 October 2026), Pune Animal Liberation is organizing a
 city-wide **Satyagraha March for Animal Liberation** across Pune.
 
-📅 Friday, 2 October 2026, 8:30 AM – 4:30 PM
+📅 Friday, 2 October 2026, 9:00 AM – 5:00 PM
 📍 Route: Gandhi Bhavan (Kothrud) → Karve Road → Deccan Gymkhana → FC Road →
 Shivajinagar → Pune Station → Yerawada → Aga Khan Palace (~14.5 km)
 ⚪ Dress code: white
@@ -29,7 +29,7 @@ On the day, PAL will also submit its memorandum of demands to the District
 Collector at the Collector Office.
 
 Join the official participant group for live route updates and coordination:
-https://chat.whatsapp.com/KAKlzaef7nZ5CCC4zCvPwa
+https://chat.whatsapp.com/KQqGm7tkdRg4Nb04nz64m4
 
 **Route & schedule** (final timings from the organizing team):
 
@@ -46,7 +46,7 @@ https://chat.whatsapp.com/KAKlzaef7nZ5CCC4zCvPwa
 11. Collector Office — memorandum of demands submitted
 12. Bapu Bhavan — 30-minute lunch halt (tofu wraps from caterer; Bapu Bhavan canteen also available on self-pay)
 13. Bund Garden
-14. Aga Khan Palace — finish, 4:30 PM
+14. Aga Khan Palace — finish, 5:00 PM (joint media address at the end)
 
 A full flow of events will be shared closer to the date.
 
