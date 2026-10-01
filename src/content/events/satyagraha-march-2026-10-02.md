@@ -48,6 +48,10 @@ https://chat.whatsapp.com/KQqGm7tkdRg4Nb04nz64m4
 13. Bund Garden
 14. Aga Khan Palace — finish, 5:00 PM (joint media address at the end)
 
+Speech points along the route: Gandhi Bhavan (start — the fight for freedom),
+FC Gate (with media address), Collector Office (demands read out during the
+speech), and Aga Khan Palace (closing speeches at the finish).
+
 A full flow of events will be shared closer to the date.
 
 A Core Organizing Committee is coordinating the march across teams covering
