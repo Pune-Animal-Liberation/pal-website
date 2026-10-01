@@ -33,26 +33,25 @@ https://chat.whatsapp.com/KQqGm7tkdRg4Nb04nz64m4
 
 **Route & schedule** (final timings from the organizing team):
 
-1. Gandhi Bhavan — start, depart 8:30 AM
-2. Karve Statue (Karve Putla)
-3. SNDT
-4. Garware College
-5. Deccan Corner
-6. Kalkar Katta
-7. FC Gate
-8. Modern College
-9. Balgandharva
-10. MaNaPa (Pune Municipal Corporation)
-11. Collector Office — memorandum of demands submitted
-12. Bapu Bhavan — 30-minute lunch halt (tofu wraps from caterer; Bapu Bhavan canteen also available on self-pay)
-13. Bund Garden
-14. Aga Khan Palace — finish, 5:00 PM (joint media address at the end)
+1. Gandhi Bhavan — flag-off 8:30–9:15 AM
+2. Karve Statue (Karve Putla) — 9:45 AM
+3. SNDT — 10:16 AM
+4. Garware College — 10:49 AM
+5. Deccan Corner — 11:13 AM
+6. Kalkar Katta — 11:25 AM
+7. FC Gate — 11:45 AM
+8. Modern College — 12:05 PM
+9. Balgandharva — 12:24 PM
+10. MaNaPa (Pune Municipal Corporation) — 12:48 PM
+11. Collector Office — 1:38 PM — memorandum of demands submitted
+12. Bapu Bhavan — 2:10–2:40 PM — lunch halt (tofu wraps from caterer; Bapu Bhavan canteen also available on self-pay)
+13. Bund Garden — 3:13 PM
+14. Aga Khan Palace — arrive 4:07 PM, closing speeches & media address till 5:30 PM
 
-Speech points along the route: Gandhi Bhavan (start — the fight for freedom),
-FC Gate (with media address), Collector Office (demands read out during the
-speech), and Aga Khan Palace (closing speeches at the finish).
-
-A full flow of events will be shared closer to the date.
+Speech points along the route: Gandhi Bhavan (opening — the fight for freedom),
+Deccan/FC Road (connecting animal rights with women's rights), Collector Office
+(demands read out during the speech), Bapu Bhavan (living a non-violent, peaceful
+life), and Aga Khan Palace (closing speeches: resistance against oppression).
 
 A Core Organizing Committee is coordinating the march across teams covering
 route planning & police permissions, outreach & mobilization (individual
