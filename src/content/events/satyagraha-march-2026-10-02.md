@@ -1,66 +1,52 @@
 ---
 title: Satyagraha March for Animal Liberation
 date: 2026-10-02
-status: upcoming
+status: concluded
 time: 9:00 AM – 5:00 PM
 location: Gandhi Bhavan (Kothrud) → Aga Khan Palace (Yerawada), Pune
 coverImage: /images/satyagraha-march-2026-10-02-poster.jpg
+recapSummary: "On Gandhi Jayanti (2 Oct 2026), PAL held a 17-km Satyagraha March from Gandhi Bhavan (Kothrud) to Aga Khan Palace (Yerawada), with 120+ participants dressed in white. Chalk art and leaflet outreach along the route; memoranda of demands submitted to the District Collector's Office and Pune Municipal Corporation. The march concluded with floral tributes at Aga Khan Palace and a collective ahimsa pledge. Covered by multiple Marathi news outlets."
+outcomes:
+  - "120+ participants marched 17 km from Gandhi Bhavan (Kothrud) to Aga Khan Palace (Yerawada)"
+  - "Memoranda of demands submitted to the District Collector's Office and Pune Municipal Corporation"
+  - "Street chalk art, leaflet distribution and public speeches along the route"
+  - "Closing floral tributes at Aga Khan Palace and a collective non-violence pledge"
+  - "Covered by Pune Focus and other Marathi news outlets"
+relatedLinks:
+  - https://punefocus.com/%e0%a4%97%e0%a4%be%e0%a4%82%e0%a4%a7%e0%a5%80-%e0%a4%9c%e0%a4%af%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%a8%e0%a4%bf%e0%a4%ae%e0%a4%bf%e0%a4%a4-%e0%a4%aa%e0%a5%81%e0%a4%a3%e0%a5%8d%e0%a4%af/
+  - https://tajasamachar24x7.com/1377
+  - https://vishalsamachar.com/?p=99030
 ---
 
-On Gandhi Jayanti (2 October 2026), Pune Animal Liberation is organizing a
-city-wide **Satyagraha March for Animal Liberation** across Pune.
+On Gandhi Jayanti (2 October 2026), Pune Animal Liberation held a city-wide
+**Satyagraha March for Animal Liberation** across Pune — a 17-kilometre padayatra
+promoting animal rights, non-violence (ahimsa) and plant-based living.
 
-📅 Friday, 2 October 2026, 9:00 AM – 5:00 PM
-📍 Route: Gandhi Bhavan (Kothrud) → Karve Road → Deccan Gymkhana → FC Road →
-Shivajinagar → Pune Station → Yerawada → Aga Khan Palace (~14.5 km)
-⚪ Dress code: white
+## Recap
 
-A joint speech point has been agreed with Gandhi Bhavan's own Gandhi Jayanti
-march (Deccan → Gandhi Bhavan, 9 AM–12 PM): the two marches will meet at a
-shared point where PAL will deliver a speech.
+More than 120 young people, conscious citizens and animal lovers took part,
+dressed in white. The march began at Gandhi Bhavan in Kothrud and passed Karve
+Statue, Deccan, Fergusson College Road, Jangali Maharaj Road, Pune Municipal
+Corporation headquarters and the District Collector's Office before concluding
+at the historic Aga Khan Palace in Yerawada.
 
-The march is not a continuous walk — it moves in stages with a good number of halts, so joining for a couple of
-hours is fine. Highlights include public
-speeches, chalk art, and street outreach conversations. Close to 100 citizens
-have signed up so far, and the count is still growing. Participants will walk
-peacefully, single-file along the footpath, without obstructing traffic.
+Along the route, volunteers created street chalk art depicting animal suffering,
+the realities of the dairy industry and environmental degradation, distributed
+educational leaflets, and held conversations with students, professionals and
+citizens.
 
-The route runs parallel to the Pune Metro network — if you can't walk the full
-distance, you can join midway at any stop, take breaks, or hop on the metro for
-a stretch.
+At the Collector's Office and PMC, PAL submitted memoranda of demands:
 
-On the day, PAL will also submit its memorandum of demands to the District
-Collector at the Collector Office.
+- Strict implementation of the Prevention of Cruelty to Animals Act
+- Activation of the District SPCA
+- Promotion of plant-based food in government procurement
+- Action against unhygienic and illegal meat-selling establishments
+- Plant-based options in educational and commercial canteens
+- Digital software as an alternative to animal dissection in science labs
 
-Join the official participant group for live route updates and coordination:
-https://chat.whatsapp.com/KQqGm7tkdRg4Nb04nz64m4
+The march concluded at Aga Khan Palace with floral tributes at the memorials of
+Mahatma Gandhi, Kasturba Gandhi and Mahadev Desai, followed by a collective
+pledge of non-violence.
 
-**Route & schedule** (final timings from the organizing team):
-
-1. Gandhi Bhavan — flag-off 8:30–9:15 AM
-2. Karve Statue (Karve Putla) — 9:45 AM
-3. SNDT — 10:16 AM
-4. Garware College — 10:49 AM
-5. Deccan Corner — 11:13 AM
-6. Kalkar Katta — 11:25 AM
-7. FC Gate — 11:45 AM
-8. Modern College — 12:05 PM
-9. Balgandharva — 12:24 PM
-10. MaNaPa (Pune Municipal Corporation) — 12:48 PM
-11. Collector Office — 1:38 PM — memorandum of demands submitted
-12. Bapu Bhavan — 2:10–2:40 PM — lunch halt (tofu wraps from caterer; Bapu Bhavan canteen also available on self-pay)
-13. Bund Garden — 3:13 PM
-14. Aga Khan Palace — arrive 4:07 PM, closing speeches & media address till 5:30 PM
-
-Speech points along the route: Gandhi Bhavan (opening — the fight for freedom),
-Deccan/FC Road (connecting animal rights with women's rights), Collector Office
-(demands read out during the speech), Bapu Bhavan (living a non-violent, peaceful
-life), and Aga Khan Palace (closing speeches: resistance against oppression).
-
-A Core Organizing Committee is coordinating the march across teams covering
-route planning & police permissions, outreach & mobilization (individual
-invitations and a city-wide contacts masterlist), creative actions (event
-poster, banners, leaflets, costumes), and digital media & content.
-
-Official event posters are out — follow this page and PAL's social media for
-the confirmed route and final details.
+The march drew press coverage, including a Pune Focus front-page feature and
+reports in several Marathi news outlets.
