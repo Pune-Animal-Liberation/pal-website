@@ -17,4 +17,7 @@ The stall was booked in the society's Navratri flea market by one of our own
 members. Come by for vegan food and a friendly conversation about animal
 liberation — a relaxed, community-oriented day right after the march.
 
+**On the menu:** mushroom nuggets, mockmeat rolls, biryani, chilli tofu,
+chai, and hot & cold coffee — all vegan. 🌱
+
 Follow this page and PAL's social media for more details.
