@@ -12,6 +12,7 @@ outcomes:
   - "Street chalk art, leaflet distribution and public speeches along the route"
   - "Closing floral tributes at Aga Khan Palace and a collective non-violence pledge"
   - "Covered by Pune Focus and other Marathi news outlets"
+  - "Extensive print coverage on 3 Oct in Marathi/Hindi newspapers including Dainik Bhaskar, Prabhat, Sakal, Navbharat, Navarashtra, Punya Nagari, Sanj Samachar, Maharashtra Times, Rashtrasanchar, Dainik Sandhya, Janpravasi and Humar Mahanagar"
 relatedLinks:
   - label: "Pune Focus — गांधी जयंतीनिमित्त पुण्यात सत्याग्रह मार्च"
     url: "https://punefocus.com/%e0%a4%97%e0%a4%be%e0%a4%82%e0%a4%a7%e0%a5%80-%e0%a4%9c%e0%a4%af%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%a8%e0%a4%bf%e0%a4%ae%e0%a4%bf%e0%a4%a4-%e0%a4%aa%e0%a5%81%e0%a4%a3%e0%a5%8d%e0%a4%af/"
