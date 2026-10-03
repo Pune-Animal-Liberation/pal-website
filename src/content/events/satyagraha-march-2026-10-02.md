@@ -13,9 +13,14 @@ outcomes:
   - "Closing floral tributes at Aga Khan Palace and a collective non-violence pledge"
   - "Covered by Pune Focus and other Marathi news outlets"
 relatedLinks:
-  - https://punefocus.com/%e0%a4%97%e0%a4%be%e0%a4%82%e0%a4%a7%e0%a5%80-%e0%a4%9c%e0%a4%af%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%a8%e0%a4%bf%e0%a4%ae%e0%a4%bf%e0%a4%a4-%e0%a4%aa%e0%a5%81%e0%a4%a3%e0%a5%8d%e0%a4%af/
-  - https://tajasamachar24x7.com/1377
-  - https://vishalsamachar.com/?p=99030
+  - label: "Pune Focus — गांधी जयंतीनिमित्त पुण्यात सत्याग्रह मार्च"
+    url: "https://punefocus.com/%e0%a4%97%e0%a4%be%e0%a4%82%e0%a4%a7%e0%a5%80-%e0%a4%9c%e0%a4%af%e0%a4%82%e0%a4%a4%e0%a5%80%e0%a4%a8%e0%a4%bf%e0%a4%ae%e0%a4%bf%e0%a4%a4-%e0%a4%aa%e0%a5%81%e0%a4%a3%e0%a5%8d%e0%a4%af/"
+  - label: "Tajasamachar24x7 — Satyagraha march coverage"
+    url: "https://tajasamachar24x7.com/1377"
+  - label: "Vishalsamachar — Satyagraha march coverage"
+    url: "https://vishalsamachar.com/?p=99030"
+  - label: "Maharashtra Lokmanch — 17 km Satyagraha March on Gandhi Jayanti"
+    url: "https://maharashtralokmanch.com/2026/10/02/17-km-satyagraha-march-held-in-pune-on-gandhi-jayanti-message-of-animal-liberation-and-plant-based-food/"
 ---
 
 On Gandhi Jayanti (2 October 2026), Pune Animal Liberation held a city-wide
