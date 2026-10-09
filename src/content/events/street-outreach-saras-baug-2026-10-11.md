@@ -2,6 +2,7 @@
 title: Street Outreach — Saras Baug
 date: 2026-10-11
 status: upcoming
+time: 18:00-21:30
 location: Saras Baug, Pune
 contactPerson: "Pravin Giri: 9284287236"
 ---

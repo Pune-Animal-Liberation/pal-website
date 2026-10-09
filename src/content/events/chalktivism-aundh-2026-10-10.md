@@ -2,6 +2,7 @@
 title: Chalktivism at Aundh
 date: 2026-10-10
 status: upcoming
+time: 18:00-22:00
 location: Aundh, Pune
 contactPerson: "Pravin Giri: 9284287236"
 ---
