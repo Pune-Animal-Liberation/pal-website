@@ -9,4 +9,6 @@ Pune Animal Liberation's big yearly meet-up for World Vegan Day — food, activi
 
 Last year's Vegan Day Bash was our first ever and a huge success, with around 75 people attending. This year we're aiming even bigger, targeting around 200 people.
 
+Entry is ₹100. Scan the QR code on the official poster to sign up and get the venue details as soon as they're announced.
+
 Venue and timings are being finalised — watch this page for updates.
