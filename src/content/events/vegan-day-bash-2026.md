@@ -2,14 +2,18 @@
 title: 🎉 Vegan Day Bash 2026
 date: 2026-11-01
 status: upcoming
-location: Pune (venue being finalised)
-time: 4:00 PM – 9:00 PM
+location: Countryside Kitchen, Bhavani Peth, Pune
+time: 5:00 PM – 9:00 PM
+registrationUrl: https://forms.gle/nQKpMP83RfBDJnBy6
 ---
 
 Pune Animal Liberation's big yearly meet-up for World Vegan Day — food, activities, and networking 🎊
 
-Last year's Vegan Day Bash was our first ever and a huge success, with around 75 people attending. This year we're aiming even bigger, targeting around 200 people.
+Last year's Vegan Day Bash was our first ever and a huge success, with around 75 people attending. This year we're aiming even bigger.
 
-Entry is ₹100. Scan the QR code on the official poster to sign up and get the venue details as soon as they're announced.
+📅 **Sunday, 1st November, 5 PM – 9 PM**
+📍 **Countryside Kitchen, Bhavani Peth, Pune**
 
-Venue is still being finalised. Timings are confirmed: **4 PM – 9 PM, 1 Nov 2026**. Watch this page (and @puneanimalliberation on Instagram) for the venue drop.
+Limited seats, so register soon: https://forms.gle/nQKpMP83RfBDJnBy6
+
+Open to everyone — vegan, non-vegan, or just curious. See you there! 💚
