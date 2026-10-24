@@ -16,3 +16,7 @@ PAL's **Street Outreach & Chalktivism**: chalk art activism and one-on-one conve
 Confirmed so far:
 1. Pravin
 2. Naveen (first two hours)
+3. Prajakta
+4. Omkar
+5. Amruta
+6. OP
