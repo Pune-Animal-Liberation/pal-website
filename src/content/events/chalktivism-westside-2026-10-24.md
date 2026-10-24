@@ -13,4 +13,6 @@ PAL's **Street Outreach & Chalktivism**: chalk art activism and one-on-one conve
 🗓 Saturday, 24 Oct, 6:00 PM – 9:30 PM
 📍 Westside, FC Road
 
-Confirmed so far: Pravin.
+Confirmed so far:
+1. Pravin
+2. Naveen (first two hours)
