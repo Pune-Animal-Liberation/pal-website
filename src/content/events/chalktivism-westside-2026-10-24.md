@@ -4,7 +4,8 @@ date: 2026-10-24
 time: "6:30 PM – 9:30 PM"
 location: "Westside, FC Road, Pune"
 mapLink: https://maps.app.goo.gl/2nxNxJdkNuTqicDz5?g_st=ac
-status: upcoming
+status: concluded
+recapSummary: "Held Sat 24 Oct, 6:30–9:30 PM at Westside, FC Road. Volunteers carried laminated anti-animal-testing placards (caged monkeys, '93% shared DNA', rabbit/rat experiment imagery) and spoke one-on-one with passersby. The call-to-action was a QR link to the CCSEA draft lab-animal-rules objection-letter email — 66 scans recorded on the link by the end of the night."
 slug: chalktivism-westside-2026-10-24
 ---
 
