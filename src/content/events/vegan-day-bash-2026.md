@@ -17,3 +17,5 @@ Last year's Vegan Day Bash was our first ever and a huge success, with around 75
 Limited seats, so register soon: https://forms.gle/nQKpMP83RfBDJnBy6
 
 Open to everyone — vegan, non-vegan, or just curious. See you there! 💚
+
+🛍️ **Vendor stalls available** — limited slots for food/product stalls, vendor fee ₹500. Message us if you'd like a stall!
