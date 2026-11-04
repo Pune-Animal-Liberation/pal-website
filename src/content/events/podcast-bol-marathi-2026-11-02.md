@@ -1,16 +1,16 @@
 ---
 title: "PAL Podcast — Bol Marathi"
-date: 2026-11-02
+date: 2026-11-04
 location: "Kharadi, Pune"
-status: upcoming
+status: concluded
 slug: podcast-bol-marathi-2026-11-02
+recapSummary: "PAL's Pravin Chaudhary recorded an episode with the Marathi podcast Bol Marathi on 4 Nov 2026 in Kharadi — a long conversation on veganism and animal rights. The episode and its clips will go out on Bol Marathi's YouTube, Instagram and Facebook channels."
 ---
 
-PAL will be featured on the Marathi podcast **Bol Marathi**, shot in Kharadi. The episode covers PAL's work and the bigger picture: **veganism and animal rights** — why we do this outreach, and what we're asking people to rethink.
+PAL was featured on the Marathi podcast **Bol Marathi**, recorded on **Wednesday, 4 Nov 2026** at **Kharadi, Pune**.
 
-The podcast team handles scripting, the studio, an interviewer, recording, editing, and promotion. The episode will be posted on their YouTube, Instagram, and Facebook channels (~200k YouTube subscribers, ~66k on Instagram).
+The conversation covered **veganism and animal rights** — why we do this outreach, and what we're asking people to rethink.
 
-🗓 Monday, 2 Nov
-📍 Kharadi, Pune
+The podcast team handles scripting, the studio, the interviewer, recording, editing and promotion, and will publish the episode and clips on their YouTube, Instagram and Facebook channels (~200k YouTube subscribers, ~66k on Instagram).
 
-Organized by Pravin Chaudhary, who reached out to and booked the show. This is the first of a planned series of podcast appearances over the coming year.
+Organized and booked by **Pravin Chaudhary**. PAL aims to appear on around ten podcasts over the coming year to build a steadier online presence for animal rights in Marathi.
