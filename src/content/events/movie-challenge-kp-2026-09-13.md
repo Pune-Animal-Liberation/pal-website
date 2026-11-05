@@ -1,7 +1,7 @@
 ---
 title: 🎬 3-Minute Movie Challenge — Damodar Wagaskar Garden, KP
 date: 2026-09-13
-status: upcoming
+status: concluded
 time: 6:00 PM - 9:00 PM
 location: Damodar Wagaskar Garden, Karve Nagar (KP)
 mapLink: https://maps.app.goo.gl/G6qK7s3FZK18D83J8?g_st=ac

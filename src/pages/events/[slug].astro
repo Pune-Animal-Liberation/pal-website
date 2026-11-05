@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, type CollectionEntry, render } from 'astro:content';
-import { isPublicEvent, statusLabels } from '../../lib/events';
+import { effectiveEventStatus, isPublicEvent, statusLabels } from '../../lib/events';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -31,8 +31,9 @@ const formattedEndDate = event.data.endDate?.toLocaleDateString('en-IN', {
   month: 'long',
   day: 'numeric',
 });
-const isUpcoming = event.data.status === 'upcoming' || event.data.status === 'postponed';
-const isConcluded = event.data.status === 'concluded';
+const status = effectiveEventStatus(event);
+const isUpcoming = status === 'upcoming' || status === 'postponed';
+const isConcluded = status === 'concluded';
 const hasRecapFields = Boolean(event.data.recapSummary || event.data.gallery.length > 0 || event.data.outcomes.length > 0 || event.data.relatedLinks.length > 0);
 ---
 
@@ -40,7 +41,7 @@ const hasRecapFields = Boolean(event.data.recapSummary || event.data.gallery.len
   <div class="page-header">
     <div class="container">
       <h1 class="page-header__title">{event.data.title}</h1>
-      <p class="page-header__subtitle">{statusLabels[event.data.status]}</p>
+      <p class="page-header__subtitle">{statusLabels[status]}</p>
     </div>
   </div>
 
@@ -53,12 +54,12 @@ const hasRecapFields = Boolean(event.data.recapSummary || event.data.gallery.len
         loading="eager"
       />
     )}
-    <p class={`event-status event-status--${event.data.status}`}>{statusLabels[event.data.status]}</p>
+    <p class={`event-status event-status--${status}`}>{statusLabels[status]}</p>
     {isUpcoming ? (
       <p class="event-intro">Join us for this upcoming event. Please check the logistics below before attending.</p>
     ) : isConcluded ? (
       <p class="event-intro">This event has concluded. Read the recap and see what the community achieved.</p>
-    ) : event.data.status === 'cancelled' ? (
+    ) : status === 'cancelled' ? (
       <p class="event-intro">This event was cancelled. It is kept here as part of our event history.</p>
     ) : (
       <p class="event-intro">This event has been postponed. Please check back for the updated date.</p>

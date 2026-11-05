@@ -1,7 +1,7 @@
 ---
 title: WTF Movie Challenge — Sambhaji Garden
 date: 2026-10-18
-status: upcoming
+status: concluded
 time: "16:00–21:00"
 location: Sambhaji Garden, J.M. Road, Pune
 contactPerson: "Pravin Giri: 9284287236"

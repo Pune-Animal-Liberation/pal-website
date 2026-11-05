@@ -4,7 +4,7 @@ date: 2026-09-27
 time: "6:00 PM – 9:30 PM"
 location: "Westside, FC Road, Pune"
 mapLink: https://maps.app.goo.gl/HvCfPu73tq41XpQb9?g_st=ac
-status: upcoming
+status: concluded
 slug: chalktivism-westside-2026-09-27
 ---
 

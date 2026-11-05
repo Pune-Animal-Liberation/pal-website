@@ -1,7 +1,7 @@
 ---
 title: 3-Minute Movie Challenge — Sambhaji Garden
 date: 2026-10-10
-status: upcoming
+status: concluded
 location: Sambhaji Garden, Pune
 contactPerson: "Pravin Giri: 9284287236"
 ---

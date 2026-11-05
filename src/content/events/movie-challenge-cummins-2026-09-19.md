@@ -1,7 +1,7 @@
 ---
 title: 🎬 3-Minute Movie Challenge — Cummins College
 date: 2026-09-19
-status: upcoming
+status: concluded
 time: 10:30 AM - 5:00 PM
 location: Cummins College, Pune
 mapLink: https://maps.app.goo.gl/vG66CKpcwC5nYHy86?g_st=ac

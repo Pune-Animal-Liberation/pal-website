@@ -1,7 +1,7 @@
 ---
 title: 🎉 Vegan Day Bash 2026
 date: 2026-11-01
-status: upcoming
+status: concluded
 location: Countryside Kitchen, Bhavani Peth, Pune
 time: 4:00 PM (doors) / 5:00 PM – 9:00 PM (programme)
 registrationUrl: https://forms.gle/nQKpMP83RfBDJnBy6

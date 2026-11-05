@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import EventCard from '../components/EventCard.astro';
 import { getCollection } from 'astro:content';
-import { eventUrl, isPastEvent, isPublicEvent, isUpcomingEvent, sortByDateAscending, sortByDateDescending } from '../lib/events';
+import { effectiveEventStatus, eventUrl, isPastEvent, isPublicEvent, isUpcomingEvent, sortByDateAscending, sortByDateDescending } from '../lib/events';
 
 const events = await getCollection('events');
 const publicEvents = events.filter(isPublicEvent);
@@ -60,7 +60,7 @@ const pastEvents = publicEvents.filter(isPastEvent).sort(sortByDateDescending);
               date={event.data.date}
               location={event.data.location}
               url={eventUrl(event)}
-              status={event.data.status}
+              status={effectiveEventStatus(event)}
               coverImage={event.data.coverImage}
               coverImageAlt={event.data.coverImageAlt}
             />
@@ -80,7 +80,7 @@ const pastEvents = publicEvents.filter(isPastEvent).sort(sortByDateDescending);
               date={event.data.date}
               location={event.data.location}
               url={eventUrl(event)}
-              status={event.data.status}
+              status={effectiveEventStatus(event)}
               coverImage={event.data.coverImage}
               coverImageAlt={event.data.coverImageAlt}
             />

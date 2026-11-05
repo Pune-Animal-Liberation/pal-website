@@ -1,7 +1,7 @@
 ---
 title: 🎬 3-Minute Movie Challenge — ARAI Hills
 date: 2026-09-12
-status: upcoming
+status: concluded
 time: 6:30 AM - 10:00 AM
 location: ARAI Hills
 mapLink: https://maps.app.goo.gl/ksvLqJSMPhfiGspT7?g_st=ac

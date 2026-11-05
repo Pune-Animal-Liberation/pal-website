@@ -3,7 +3,7 @@ title: "Restaurant Outreach — FC Road"
 date: 2026-10-30
 time: "3:30 PM onwards"
 location: "FC Road, Pune"
-status: upcoming
+status: concluded
 slug: restaurant-outreach-fc-road-2026-10-30
 ---
 

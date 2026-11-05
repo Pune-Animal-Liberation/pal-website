@@ -4,7 +4,7 @@ date: 2026-09-26
 time: "6:00 PM – 10:00 PM"
 location: "Karishma Society, Pune"
 mapLink: https://maps.app.goo.gl/MpQdKmaBtSihwYEm8?g_st=ac
-status: upcoming
+status: concluded
 slug: wtf-movie-challenge-karishma-2026-09-26
 ---
 

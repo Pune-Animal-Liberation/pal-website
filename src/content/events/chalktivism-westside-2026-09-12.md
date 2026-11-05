@@ -1,7 +1,7 @@
 ---
 title: Chalktivism & Street Outreach — Westside, FC Road
 date: 2026-09-12
-status: upcoming
+status: concluded
 time: 6:00 PM - 9:00 PM
 location: Outside Westside, FC Road
 mapLink: https://maps.app.goo.gl/xfgaz93vjGNn5jmW7?g_st=ac

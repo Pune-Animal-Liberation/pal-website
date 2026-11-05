@@ -2,7 +2,7 @@
 title: "Spider-Man Visarjan Procession Outreach 🕷️"
 date: 2026-09-25
 endDate: 2026-09-25
-status: upcoming
+status: concluded
 time: "5:00 PM onwards"
 location: JM Road, Sambhaji Garden, Pune
 contactPerson: Omkar

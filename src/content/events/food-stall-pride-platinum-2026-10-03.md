@@ -1,7 +1,7 @@
 ---
 title: Food Stall at Pride Platinum Flea Market
 date: 2026-10-03
-status: upcoming
+status: concluded
 time: 4:00 PM - 9:00 PM
 location: Pride Platinum society, Pune
 ---
