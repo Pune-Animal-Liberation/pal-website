@@ -4,7 +4,7 @@ date: 2026-11-07
 time: "6:30 AM – 9:30 AM"
 location: "Gliding Centre, Hadapsar, Pune"
 mapLink: https://maps.app.goo.gl/hUSFzoK6jbPCZAZQ7?g_st=ac
-status: upcoming
+status: concluded
 slug: street-outreach-gliding-centre-2026-11-07
 ---
 

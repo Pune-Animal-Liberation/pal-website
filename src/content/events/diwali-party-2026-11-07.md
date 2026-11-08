@@ -3,7 +3,7 @@ title: Vegan Diwali Party 2026 🪔
 date: 2026-11-07
 time: 4:00 PM – 10:00 PM
 location: Countryside Kitchen, Bhavani Peth, Pune
-status: upcoming
+status: concluded
 coverImage: /images/vegan-diwali-party-2026-poster.jpg
 coverImageAlt: "PAL poster for the Vegan Diwali Party 2026 — black and gold, Saturday 7 November, 4 to 10 PM, Countryside Kitchen"
 ---
