@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://puneanimalliberation.com/sitemap.xml
+Sitemap: https://puneanimalliberation.com/sitemap-index.xml
 
 # Block common non-content paths
 Disallow: /api/
