@@ -15,4 +15,4 @@ slug: chalktivism-westside-2026-11-15
 
 📝 Add your name to the outreach alert in the PAL activists group to confirm you're coming.
 
-Earlier in the afternoon a few of the group are filming a short promotional video for the Goa Animal Liberation March at **Sambhaji Garden, 3:00 PM** — say so in the group if you'd like to be in it. Late arrivals are gently called out, so aim to be on time. 💚
+Earlier in the afternoon a few of the group are filming a short promotional video for the Goa Animal Liberation March at **Sambhaji Garden, 4:00 PM** — wear a PAL t-shirt if you have one, and say so in the group if you'd like to be in it. Late arrivals are gently called out, so aim to be on time. 💚
