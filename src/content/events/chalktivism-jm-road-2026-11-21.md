@@ -3,6 +3,7 @@ title: "City-wide Chalktivism — Meet at JM Road"
 date: 2026-11-21
 time: "10:00 AM onwards"
 location: "JM Road, Pune"
+mapLink: https://maps.app.goo.gl/THU9MKdsjkjEe2BY9?g_st=ac
 status: upcoming
 slug: chalktivism-jm-road-2026-11-21
 ---
