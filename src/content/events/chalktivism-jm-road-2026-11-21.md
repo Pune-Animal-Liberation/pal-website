@@ -4,7 +4,8 @@ date: 2026-11-21
 time: "10:00 AM onwards"
 location: "JM Road, Pune"
 mapLink: https://maps.app.goo.gl/THU9MKdsjkjEe2BY9?g_st=ac
-status: upcoming
+status: concluded
+recapSummary: "Held Sat 21 Nov from 10 AM, JM Road as the meeting point and teams fanning out across the city. Volunteers spent the day chalking on the pavement — chicken portraits beside lines like 'Why doesn't a chicken have the right to live like a dog?' and 'I AM ME NOT MEAT', with the birds labelled '45 Days' and '3 Days' for the lifespan a broiler chicken gets. The drawings were left on the footpaths through the day for passers-by to stop and read."
 slug: chalktivism-jm-road-2026-11-21
 ---
 
