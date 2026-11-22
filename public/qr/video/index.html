@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Opening the video | Pune Animal Liberation</title>
+  <script defer src="https://analytics.greenfit.in/script.js" data-website-id="338cb98a-f616-4b20-b1e3-52070be1aab9"></script>
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; box-sizing: border-box; background: #faf8f2; color: #20362b; font: 1rem/1.6 system-ui, sans-serif; text-align: center; }
+    main { max-width: 32rem; }
+    a { color: #167145; font-weight: 650; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Opening the video</h1>
+    <p>You’re being sent to the video. If you aren’t redirected, <a href="https://youtu.be/uzQaHIHK2yA?si=M6ePLNXNvqyFRzG-">continue here</a>.</p>
+  </main>
+  <script>
+    const destination = "https://youtu.be/uzQaHIHK2yA?si=M6ePLNXNvqyFRzG-";
+    const startedAt = Date.now();
+    function continueWhenTracked() {
+      if (window.umami) {
+        setTimeout(() => window.location.replace(destination), 250);
+      } else if (Date.now() - startedAt >= 2500) {
+        window.location.replace(destination);
+      } else {
+        setTimeout(continueWhenTracked, 50);
+      }
+    }
+    continueWhenTracked();
+  </script>
+</body>
+</html>
